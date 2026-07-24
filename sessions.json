@@ -12609,5 +12609,31 @@
     "manual": false,
     "screenshots": [],
     "url": null
+  },
+  {
+    "id": 322,
+    "uid": 6,
+    "project": "AMC Project",
+    "category": "Work",
+    "start": "2026-07-24T15:15:47.825Z",
+    "duration": 1946,
+    "date": "2026-07-24",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "https://pub-3da5c608eb734dd6a83d2efe4e650251.r2.dev/screenshots/uid_6/322_1784906153259.jpg",
+        "time": "2026-07-24T15:15:53.259Z",
+        "mouse": 77,
+        "keys": 0
+      },
+      {
+        "url": "https://pub-3da5c608eb734dd6a83d2efe4e650251.r2.dev/screenshots/uid_6/322_1784907053790.jpg",
+        "time": "2026-07-24T15:30:53.790Z",
+        "mouse": 61,
+        "keys": 0
+      }
+    ],
+    "url": null
   }
 ]

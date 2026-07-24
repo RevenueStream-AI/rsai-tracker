@@ -435,7 +435,7 @@
     <div class="card-title">Report period</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
       <div style="min-width:140px"><label style="font-size:11px;font-weight:500;color:var(--text2);display:block;margin-bottom:5px">Quick range</label>
-        <select id="rptRange" onchange="applyRange()"><option value="1w">This week</option><option value="2w">Last 2 weeks</option><option value="1m">This month</option><option value="custom">Custom</option></select>
+        <select id="rptRange" onchange="applyRange()"><option value="today">Today</option><option value="yesterday">Yesterday</option><option value="1w">This week</option><option value="2w">Last 2 weeks</option><option value="1m">This month</option><option value="custom">Custom</option></select>
       </div>
       <div id="customFrom" style="display:none;min-width:130px"><label style="font-size:11px;font-weight:500;color:var(--text2);display:block;margin-bottom:5px">From</label><input type="date" id="rptFrom"/></div>
       <div id="customTo" style="display:none;min-width:130px"><label style="font-size:11px;font-weight:500;color:var(--text2);display:block;margin-bottom:5px">To</label><input type="date" id="rptTo"/></div>
@@ -2201,9 +2201,9 @@ function applyRange(){
   document.getElementById('customFrom').style.display=v==='custom'?'block':'none';
   document.getElementById('customTo').style.display=v==='custom'?'block':'none';
   const td=todayStr();
-  if(v==='1w'){ document.getElementById('rptFrom').value=mondayOf(td); document.getElementById('rptTo').value=td; }
+  if(v==='today'){ document.getElementById('rptFrom').value=td; document.getElementById('rptTo').value=td; } else if(v==='yesterday'){ const yd=addDays(td,-1); document.getElementById('rptFrom').value=yd; document.getElementById('rptTo').value=yd; } else if(v==='1w'){ document.getElementById('rptFrom').value=mondayOf(td); document.getElementById('rptTo').value=td; }
   else if(v==='2w'){ document.getElementById('rptFrom').value=addDays(mondayOf(td),-7); document.getElementById('rptTo').value=td; }
-  else if(v==='1m'){ document.getElementById('rptFrom').value=td.slice(0,8)+'01'; document.getElementById('rptTo').value=td; }
+  else if(v==='1m'){ document.getElementById('rptFrom').value=td.slice(0,8)+'01'; document.getElementById('rptTo').value=td; } if(v!=='custom') runReport();
 }
 
 function runReport(){

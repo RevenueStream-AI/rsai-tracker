@@ -255,7 +255,7 @@
     </div>
     
     <div id="clerk-auth-mount"></div>
-<div id="clerkAuthError" style="color:#e74c3c;font-size:13px;margin-top:12px;display:none;"></div>
+<div id="clerkAuthError" style="color:#e74c3c;font-size:13px;margin-top:12px;display:none;"></div><div id="clerkTimeoutMsg" style="display:none;margin-top:14px;font-size:13px;color:#7a5c00;">Taking longer than expected. <a href="#" onclick="location.reload();return false;" style="color:#2b6cb0;text-decoration:underline;">Click here to retry</a></div>
   </div>
 </div>
 
@@ -4424,7 +4424,7 @@ async function amcMatchClerkUserAndLogin(clerkUser) {
   if (errEl) errEl.style.display = 'none';
   completeLogin(match);
 }
-window.addEventListener('load', async function () {
+window.addEventListener('load', async function () { setTimeout(function(){ var __ls = document.getElementById('loginScreen'); var __tm = document.getElementById('clerkTimeoutMsg'); if (__ls && __ls.style.display !== 'none' && __tm) { __tm.style.display = 'block'; } }, 8000);
   try {
     await Clerk.load();
     if (Clerk.user) {
@@ -4437,7 +4437,7 @@ window.addEventListener('load', async function () {
       if (payload.user) amcMatchClerkUserAndLogin(payload.user);
     });
   } catch (e) {
-    console.error('Clerk init failed', e);
+    console.error('Clerk init failed', e); var __tm2 = document.getElementById('clerkTimeoutMsg'); if (__tm2) { __tm2.style.display = 'block'; }
   }
 });
 </script>

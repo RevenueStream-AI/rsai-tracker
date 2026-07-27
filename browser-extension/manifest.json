@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "AMC Tracker Activity Monitor",
+    "version": "1.0.0",
+    "description": "Automatically tracks time spent per website and reports it to the AMC Time Tracker.",
+    "permissions": ["tabs", "idle", "alarms", "storage"],
+    "host_permissions": ["https://tracker.amclms.com/*"],
+    "background": { "service_worker": "background.js" },
+    "action": { "default_popup": "popup.html", "default_title": "AMC Tracker Activity Monitor" }
+}

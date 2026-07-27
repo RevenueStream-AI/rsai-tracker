@@ -2012,7 +2012,7 @@ function renderUrlActivity(){
   var periodFilter=document.getElementById('urlPeriodFilter')?document.getElementById('urlPeriodFilter').value:'week';
   var dateFilter=document.getElementById('urlDateFilter')?document.getElementById('urlDateFilter').value:'';
   // Read sessions (use GitHub cache if available)
-  var allData = (window.ghSessions && window.ghSessions.length>0) ? window.ghSessions : (typeof sessions !== 'undefined' && sessions.length>0) ? sessions : [];
+  var allData = ((window.ghSessions && window.ghSessions.length>0) ? window.ghSessions : (typeof sessions !== 'undefined' && sessions.length>0) ? sessions : []).concat((window.amcAutoUrlActivity||[]).map(function(a){var mu=(users||[]).find(function(u){return (u.email||'').toLowerCase()===a.email;});return {uid:mu?mu.id:a.email,url:a.domain,duration:a.seconds||0,date:a.date};}));
   // Only sessions with a URL
   var urlSessions = allData.filter(function(s){return s.url&&s.url.length>0;});
   // Filter by member

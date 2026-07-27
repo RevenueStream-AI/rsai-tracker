@@ -9781,19 +9781,6 @@
     "url": "tracker.amclms.com"
   },
   {
-    "id": 353,
-    "uid": 25,
-    "project": "AMC Project",
-    "category": "Work",
-    "start": "2026-07-27T17:56:30.976Z",
-    "duration": 118,
-    "date": "2026-07-27",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
     "id": 126,
     "uid": 13,
     "project": "AMC Project",
@@ -12846,6 +12833,32 @@
         "keys": 0
       }
     ],
+    "url": null
+  },
+  {
+    "id": 353,
+    "uid": 25,
+    "project": "AMC Project",
+    "category": "Work",
+    "start": "2026-07-27T17:56:30.976Z",
+    "duration": 118,
+    "date": "2026-07-27",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 355,
+    "uid": 25,
+    "project": "AMC Project",
+    "category": "Work",
+    "start": "2026-07-27T18:08:37.483Z",
+    "duration": 1,
+    "date": "2026-07-27",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
     "url": null
   }
 ]

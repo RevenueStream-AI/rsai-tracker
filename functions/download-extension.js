@@ -1,6 +1,6 @@
 export async function onRequestGet() {
-    const owner = "AmericanMedicalCompliance";
-    const repo = "amc-tracker";
+            const owner = "RevenueStream-AI";
+            const repo = "rsai-tracker";
     const branch = "classic-tracker";
     const files = ["manifest.json", "background.js", "popup.html", "popup.js"];
     const enc = new TextEncoder();
@@ -15,7 +15,7 @@ export async function onRequestGet() {
   return new Response(buildZip(entries), {
         headers: {
                 "Content-Type": "application/zip",
-                "Content-Disposition": 'attachment; filename="amc-time-tracker-extension.zip"',
+                                    "Content-Disposition": 'attachment; filename="rsai-tracker-extension.zip"',
                 "Cache-Control": "no-store"
         }
   });

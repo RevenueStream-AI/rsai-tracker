@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: /functions/sync-url-activity.js
-// Receives automatic browser activity (domain + time spent) reported by the AMC Tracker
+// Receives automatic browser activity (domain + time spent) reported by the RSAI Tracker
 // Chrome extension and merges it into GitHub's url-activity.json using a server-side PAT secret.
 // One record per person per domain per day; seconds accumulate across repeated calls.
 // Requires GITHUB_PAT environment variable configured in Cloudflare Pages settings.
@@ -27,14 +27,14 @@ export async function onRequestPost(context) {
         }
         const sec = Math.max(0, Math.min(3600, Number(seconds) || 0));
 
-      const owner = 'AmericanMedicalCompliance';
-        const repo = 'amc-tracker';
+              const owner = 'RevenueStream-AI';
+                const repo = 'rsai-tracker';
         const file = 'url-activity.json';
         const apiBase = 'https://api.github.com';
 
       async function doMergeAndWrite(attempt = 0) {
               const fileResp = await fetch(`${apiBase}/repos/${owner}/${repo}/contents/${file}?ref=classic-tracker`, {
-                        headers: { Authorization: `token ${pat}`, 'User-Agent': 'amc-tracker' },
+                                        headers: { Authorization: `token ${pat}`, 'User-Agent': 'RSAI-Tracker-App' },
               });
 
           let existing = [];
@@ -69,7 +69,7 @@ export async function onRequestPost(context) {
           const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(existing))));
               const putResp = await fetch(`${apiBase}/repos/${owner}/${repo}/contents/${file}`, {
                         method: 'PUT',
-                        headers: { Authorization: `token ${pat}`, 'User-Agent': 'amc-tracker', 'Content-Type': 'application/json' },
+                                    headers: { Authorization: `token ${pat}`, 'User-Agent': 'RSAI-Tracker-App', 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                                     message: `Update url-activity for ${emailLower} [skip ci]`,
                                     content: encoded,

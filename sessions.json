@@ -14840,7 +14840,7 @@
     "project": "AMC Project",
     "category": "Work",
     "start": "2026-07-28T14:59:30.253Z",
-    "duration": 930,
+    "duration": 960,
     "date": "2026-07-28",
     "type": "tracked",
     "manual": false,
@@ -14850,6 +14850,12 @@
         "time": "2026-07-28T14:59:33.396Z",
         "mouse": 64,
         "keys": 2
+      },
+      {
+        "url": "https://pub-3da5c608eb734dd6a83d2efe4e650251.r2.dev/screenshots/uid_11/373_1785251673592.jpg",
+        "time": "2026-07-28T15:14:33.592Z",
+        "mouse": 263,
+        "keys": 0
       }
     ],
     "url": "tracker.amclms.com"

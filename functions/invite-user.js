@@ -1,13 +1,13 @@
 // Cloudflare Pages Function: /functions/invite-user.js
 // Creates a real Clerk invitation for a given email using Clerk's Backend API,
-// then sends a custom-branded invite email via EmailJS (instead of Clerk's own
-// built-in email). Clerk stays silent (notify:false) so only our EmailJS email
+// and sends Clerk's own default (notify:true) built-in invitation email.
+// (EmailJS custom-branded email is optional/unused unless EMAILJS_* env vars are set.)
 // goes out. Also invites the person to the shared Clerk Organization so they
 // land inside it automatically instead of hitting the "create your own org"
 // screen. All secret keys stay server-side only and are never sent to the browser.
-// Called by the AMC Time Tracker admin Users page (sendInvite()).
+// Called by the RSAI Tracker admin Users page (sendInvite()).
 
-const ORG_ID = 'org_3GavdZx5XcUuW5VOH0xiOO0wgbp';
+const ORG_ID = 'org_3H9CaYJ5F3ugNkrgZdmTtDzPPWW';
 
 export async function onRequestPost(context) {
     const { request, env } = context;
@@ -64,8 +64,8 @@ try {
         },
         body: JSON.stringify({
             email_address: email,
-            redirect_url: 'https://tracker.amclms.com/',
-            notify: false,
+                        redirect_url: 'https://tracker.revenuestream.ai/',
+                        notify: true,
             ignore_existing: true,
             public_metadata: name ? { name: name } : undefined,
         }),
@@ -82,7 +82,7 @@ try {
     }
 
     const inviteLink = data.url
-    || (data.ticket ? ('https://accounts.tracker.amclms.com/sign-up?__clerk_ticket=' + data.ticket) : 'https://tracker.amclms.com/');
+            || (data.ticket ? ('https://accounts.tracker.revenuestream.ai/sign-up?__clerk_ticket=' + data.ticket) : 'https://tracker.revenuestream.ai/');
 
     let orgInvite = null;
     try {

@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: /functions/upload-screenshot.js
-// Handles screenshot uploads to R2 from the AMC Tracker frontend
+// Handles screenshot uploads to R2 from the RSAI Tracker frontend
 // Credentials stored as Pages environment variables (not in code)
 
 export async function onRequestPost(context) {
@@ -36,8 +36,8 @@ export async function onRequestPost(context) {
     const R2_ACCOUNT_ID = env.R2_ACCOUNT_ID;
     const R2_ACCESS_KEY_ID = env.R2_ACCESS_KEY_ID;
     const R2_SECRET_ACCESS_KEY = env.R2_SECRET_ACCESS_KEY;
-    const R2_BUCKET = env.R2_BUCKET || 'amc-screenshots';
-    const R2_PUBLIC_URL = env.R2_PUBLIC_URL || 'https://pub-a4e2d07f3868410181b72afe397c0020.r2.dev';
+        const R2_BUCKET = env.R2_BUCKET || 'rsai-screenshots';
+        const R2_PUBLIC_URL = env.R2_PUBLIC_URL || '';
 
     const endpoint = `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
     const url = `${endpoint}/${R2_BUCKET}/${fileName}`;

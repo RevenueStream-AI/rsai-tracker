@@ -1,6 +1,6 @@
 // Cloudflare Pages Function: /functions/sync-sessions.js
 // Syncs a user's time-tracking sessions to GitHub's sessions.json using a server-side PAT secret.
-// Called by the AMC Time Tracker app whenever sessions are updated for the current user.
+// Called by the RSAI Tracker app whenever sessions are updated for the current user.
 // Requires GITHUB_PAT environment variable set in Cloudflare Pages settings.
 
 export async function onRequestPost(context) {
@@ -32,8 +32,8 @@ try {
     });
   }
 
-  const owner = 'AmericanMedicalCompliance';
-  const repo = 'amc-tracker';
+  const owner = 'RevenueStream-AI';
+    const repo = 'rsai-tracker';
   const file = 'sessions.json';
   const apiBase = 'https://api.github.com';
 
@@ -42,7 +42,7 @@ try {
       headers: {
         Authorization: `token ${pat}`,
         Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'AMC-Tracker-App',
+                'User-Agent': 'RSAI-Tracker-App',
       },
     });
 
@@ -90,7 +90,7 @@ try {
       Authorization: `token ${pat}`,
       Accept: 'application/vnd.github.v3+json',
       'Content-Type': 'application/json',
-      'User-Agent': 'AMC-Tracker-App',
+            'User-Agent': 'RSAI-Tracker-App',
     },
     body: JSON.stringify({
       message: `Update sessions for uid ${uid} [skip ci]`,

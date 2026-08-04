@@ -4403,7 +4403,7 @@ function emailPayroll(){
   var ps=document.getElementById('pr-periodStart'),pe=document.getElementById('pr-periodEnd'),tb=document.getElementById('pr-tbody');
   if(!tb){alert('Please generate payroll first.');return;}
   var rows=[].slice.call(tb.querySelectorAll('tr')).map(function(r){return [].slice.call(r.querySelectorAll('td')).map(function(c){return c.textContent.trim();}).join(' | ');}).join('\n');
-  var sub='AMC Payroll '+(ps&&ps.value?ps.value:'')+(pe&&pe.value?' to '+pe.value:'');
+  var sub='RSAI Payroll '+(ps&&ps.value?ps.value:'')+(pe&&pe.value?' to '+pe.value:'');
   var bod='Payroll Report\nPeriod: '+(ps&&ps.value?ps.value:'')+' to '+(pe&&pe.value?pe.value:'')+'\n\n'+rows;
   if(window.emailjs&&window._ejsService&&window._ejsTemplate){window.emailjs.send(window._ejsService,window._ejsTemplate,{subject:sub,message:bod}).then(function(){alert('Payroll emailed successfully!');}).catch(function(e){alert('Email failed: '+(e&&e.text?e.text:e));});}
   else{window.location.href='mailto:?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(bod);}

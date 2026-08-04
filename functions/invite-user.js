@@ -7,7 +7,7 @@
 // screen. All secret keys stay server-side only and are never sent to the browser.
 // Called by the RSAI Tracker admin Users page (sendInvite()).
 
-const ORG_ID = 'org_3H9CaYJ5F3ugNkrgZdmTtDzPPWW';
+const ORG_ID = '';
 
 export async function onRequestPost(context) {
     const { request, env } = context;
@@ -82,9 +82,9 @@ try {
     }
 
     const inviteLink = data.url
-            || (data.ticket ? ('https://accounts.tracker.revenuestream.ai/sign-up?__clerk_ticket=' + data.ticket) : 'https://tracker.revenuestream.ai/');
+            || (data.ticket ? ('https://accounts.revenuestream.ai/sign-up?__clerk_ticket=' + data.ticket) : 'https://tracker.revenuestream.ai/');
 
-    let orgInvite = null;
+    let orgInvite = null; if (ORG_ID) if (ORG_ID)
     try {
         try {
             const orgListResp = await fetch(

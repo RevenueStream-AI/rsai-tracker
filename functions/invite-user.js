@@ -84,7 +84,7 @@ try {
     const inviteLink = data.url
             || (data.ticket ? ('https://accounts.revenuestream.ai/sign-up?__clerk_ticket=' + data.ticket) : 'https://tracker.revenuestream.ai/');
 
-    let orgInvite = null; if (ORG_ID) if (ORG_ID)
+    let orgInvite = null; if (ORG_ID)
     try {
         try {
             const orgListResp = await fetch(

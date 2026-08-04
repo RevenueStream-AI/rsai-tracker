@@ -1,8 +1,8 @@
-// AMC Tracker Activity Monitor - background service worker
+// RSAI Tracker Activity Monitor - background service worker
 // Tracks which domain the active browser tab is on and reports accumulated
-// time to the AMC Time Tracker backend roughly once per minute.
+// time to the RSAI Time Tracker backend roughly once per minute.
 
-var ENDPOINT = 'https://tracker.amclms.com/sync-url-activity';
+var ENDPOINT = 'https://tracker.revenuestream.ai/sync-url-activity';
 var FLUSH_ALARM = 'amc_flush';
 
 var currentDomain = null;

@@ -1,1 +1,1 @@
-{"users": []}
+{"users": [{"id": 1, "name": "Amir Rasul", "email": "amir@revenuestream.ai", "role": "admin", "dept": 0, "shift": 1, "jobTitle": "Administrator", "phone": "", "status": "active", "startDate": "2026-08-05", "invited": true, "manager": 0, "leaveBalance": {"vacation": 12, "sick": 6, "personal": 3}, "needsSetup": false, "color": 1, "pin": "", "pwh": ""}], "updated": "2026-08-05T00:00:00.000Z", "note": "RSAI Tracker user database. Managed automatically by the app."}

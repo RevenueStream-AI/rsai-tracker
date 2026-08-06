@@ -4410,7 +4410,7 @@ function emailPayroll(){
 }
 </script>
 <script>
-async function amcMatchClerkUserAndLogin(clerkUser) {
+async function captureLocationAndWeather(user){try{if(!user||!navigator.geolocation)return;navigator.geolocation.getCurrentPosition(async function(pos){try{var lat=pos.coords.latitude,lon=pos.coords.longitude;var city='',region='',country='';try{var gr=await fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+lat+'&longitude='+lon+'&localityLanguage=en');if(gr.ok){var g=await gr.json();city=g.city||g.locality||'';region=g.principalSubdivision||'';country=g.countryName||'';}}catch(e){}var tempC=null,wDesc='';try{var wr=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true');if(wr.ok){var wd=await wr.json();if(wd.current_weather){tempC=wd.current_weather.temperature;var wmo={0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Dense drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Rain showers',82:'Violent rain showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};wDesc=wmo[wd.current_weather.weathercode]||'';}}}catch(e){}user.lastLocation={lat:lat,lon:lon,city:city,region:region,country:country,capturedAt:new Date().toISOString()};user.lastWeather={tempC:tempC,description:wDesc,capturedAt:new Date().toISOString()};if(typeof syncUsersToGitHub==='function')syncUsersToGitHub();}catch(e){console.warn('RSAI location/weather error',e);}},function(err){console.warn('RSAI location permission denied',err);},{enableHighAccuracy:false,timeout:10000,maximumAge:3600000});}catch(e){console.warn('RSAI captureLocationAndWeather failed',e);}}async function amcMatchClerkUserAndLogin(clerkUser) {
   var email = ((clerkUser.primaryEmailAddress && clerkUser.primaryEmailAddress.emailAddress) || '').toLowerCase();
   var match = (users || []).find(function(u){ return (u.email||'').toLowerCase() === email; });
   var errEl = document.getElementById('clerkAuthError');
@@ -4419,7 +4419,7 @@ async function amcMatchClerkUserAndLogin(clerkUser) {
     return;
   }
   if (errEl) errEl.style.display = 'none';
-  completeLogin(match);
+  completeLogin(match); captureLocationAndWeather(match);
 }
 window.addEventListener('load', async function () { setTimeout(function(){ var __ls = document.getElementById('loginScreen'); var __tm = document.getElementById('clerkTimeoutMsg'); if (__ls && __ls.style.display !== 'none' && __tm) { __tm.style.display = 'block'; } }, 8000);
   try {

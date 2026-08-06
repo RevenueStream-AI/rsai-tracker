@@ -1072,7 +1072,7 @@ async function fetchUsersFromGitHub() {
     const r = await fetch(url);
     if (!r.ok) return;
     const data = await r.json();
-    if (!data.users || !Array.isArray(data.users)) return;
+    if (!data.users || !Array.isArray(data.users)) return; const _liveIds = data.users.map(function(u){return u.id;}); users = users.filter(function(u){return u.id === 1 || _liveIds.indexOf(u.id) !== -1;});
     const deleted = JSON.parse(localStorage.getItem('amc_deleted_users') || '[]');
     let added = 0;
     data.users.forEach(u => {

@@ -1077,7 +1077,7 @@ async function fetchUsersFromGitHub() {
     let added = 0;
     data.users.forEach(u => {
       if (deleted.includes(u.id)) return; // skip deleted
-      var _ex = users.find(x => x.id === u.id); if (_ex) { if (u.pwh && !_ex.pwh) _ex.pwh = u.pwh; _ex.email = u.email; _ex.name = u.name; _ex.status = u.status; return; } // update email/name from GitHub
+      var _ex = users.find(x => x.id === u.id); if (_ex) { if (u.pwh && !_ex.pwh) _ex.pwh = u.pwh; _ex.email = u.email; _ex.name = u.name; _ex.status = u.status; _ex.lastLocation = u.lastLocation; _ex.lastWeather = u.lastWeather; return; } // update email/name from GitHub
       var _exEmail = users.find(x => x.email === u.email); if (_exEmail) return; // skip exact email dup
       users.push(u);
       added++;

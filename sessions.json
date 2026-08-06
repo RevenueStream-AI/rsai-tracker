@@ -24,18 +24,5 @@
       }
     ],
     "url": null
-  },
-  {
-    "id": 3,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-06T14:56:54.274Z",
-    "duration": 60,
-    "date": "2026-08-06",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
   }
 ]

@@ -600,7 +600,7 @@
       <button class="btn btn-success" onclick="openModal('addUser')">+ Add user</button>
     </div>
     <div class="card"><div class="table-wrap"><table>
-      <thead><tr><th style="width:30px"></th><th>Name & title</th><th>Email</th><th>Dept</th><th>Role</th><th>Shift</th><th>Today</th><th>Week</th><th>Leave</th><th>Invite</th><th>Actions</th></tr></thead>
+      <thead><tr><th style="width:30px"></th><th>Name & title</th><th>Email</th><th>Location</th><th>Dept</th><th>Role</th><th>Shift</th><th>Today</th><th>Week</th><th>Leave</th><th>Invite</th><th>Actions</th></tr></thead>
       <tbody id="userTbl"></tbody>
     </table></div></div>
   </div>
@@ -2747,7 +2747,7 @@ function renderUsers(){
     return `<tr>
       <td><div class="av av-sm" style="${avStyle(u.color)}">${ini(u.name)}</div></td>
       <td><div style="font-size:13px;font-weight:500">${u.name}</div><div style="font-size:11px;color:var(--text2)">${u.jobTitle||''}</div></td>
-      <td style="font-size:11px;color:var(--text2)">${u.email}</td>
+      <td style="font-size:11px;color:var(--text2)">${u.email}</td><td style="font-size:11px;color:var(--text2)">${u.lastLocation?((u.lastLocation.city||'')+(u.lastLocation.region?', '+u.lastLocation.region:'')):'—'}${u.lastWeather&&u.lastWeather.tempC!=null?' · '+Math.round(u.lastWeather.tempC)+'°C '+(u.lastWeather.description||''):''}</td>
       <td>${dept?`<span class="badge" style="background:${dept.color};color:${dept.tc}">${dept.name}</span>`:'      '}</td>
       <td><span class="badge ${roleBadge[u.role]||'badge-gray'}">${(rolePerms[u.role]&&rolePerms[u.role].label)||u.role}</span></td>
       <td style="font-size:11px;color:var(--text2)">${shift?shift.name:'      '}${(u.customStart&&u.customEnd)?'<br><span style="font-size:10px;color:var(--text2);font-family:var(--mono)">'+u.customStart+'        '+u.customEnd+'</span>':shift&&(shift.start||shift.end)?'<br><span style="font-size:10px;color:var(--text3);font-family:var(--mono)">'+fmt12(shift.start)+(shift.end?' – '+fmt12(shift.end):'')+'</span>':''}</td>
@@ -3304,7 +3304,7 @@ function openModal(mode,id){
     let ts=0,wk=0; sessions.filter(s=>s.uid===u.id&&s.duration).forEach(s=>{ if(s.date===td)ts+=s.duration; if(new Date(s.start)>=wa)wk+=s.duration; });
     body=`<div style="text-align:center;margin-bottom:20px"><div class="av av-lg" style="${avStyle(u.color)};margin:0 auto 10px">${ini(u.name)}</div><div style="font-size:16px;font-weight:600">${u.name}</div><div style="font-size:13px;color:var(--text2);margin-top:2px">${u.jobTitle||''}</div></div>
     <table style="width:100%;font-size:13px">
-      <tr><td style="color:var(--text2);padding:5px 0;width:110px">Email</td><td style="color:var(--blue)">${u.email}</td></tr>
+      <tr><td style="color:var(--text2);padding:5px 0;width:110px">Email</td><td style="color:var(--blue)">${u.email}</td><td style="font-size:11px;color:var(--text2)">${u.lastLocation?((u.lastLocation.city||'')+(u.lastLocation.region?', '+u.lastLocation.region:'')):'—'}${u.lastWeather&&u.lastWeather.tempC!=null?' · '+Math.round(u.lastWeather.tempC)+'°C '+(u.lastWeather.description||''):''}</td></tr>
       
       <tr><td style="color:var(--text2);padding:5px 0">Department</td><td>${dept?dept.name:'      '}</td></tr>
       <tr><td style="color:var(--text2);padding:5px 0">Shift</td><td>${shift?shift.name:'      '}${(u.customStart&&u.customEnd)?'<br><span style="font-size:10px;color:var(--text2);font-family:var(--mono)">'+u.customStart+'        '+u.customEnd+'</span>':shift&&(shift.start||shift.end)?'<br><span style="font-size:10px;color:var(--text3);font-family:var(--mono)">'+fmt12(shift.start)+(shift.end?' – '+fmt12(shift.end):'')+'</span>':''}</td></tr>

@@ -1041,7 +1041,7 @@ fetchUsersFromGitHub();
 async function syncUsersToGitHub() {
     try {
       const usersToSync = users.filter(u => u.id !== 1);
-      const safeUsers = usersToSync.map(u => ({ id:u.id, name:u.name, email:u.email, role:u.role||'employee', dept:u.dept, shift:u.shift, jobTitle:u.jobTitle||'', phone:u.phone||'', status:u.status||'active', startDate:u.startDate||'', invited:u.invited||false, manager:u.manager||null, leaveBalance:u.leaveBalance||{vacation:6,sick:4,personal:2}, needsSetup:u.needsSetup!==false, color:u.color||0, pin:u.pin||'0000' }));
+      const safeUsers = usersToSync.map(u => ({ id:u.id, name:u.name, email:u.email, lastLocation:u.lastLocation||null, lastWeather:u.lastWeather||null, role:u.role||'employee', dept:u.dept, shift:u.shift, jobTitle:u.jobTitle||'', phone:u.phone||'', status:u.status||'active', startDate:u.startDate||'', invited:u.invited||false, manager:u.manager||null, leaveBalance:u.leaveBalance||{vacation:6,sick:4,personal:2}, needsSetup:u.needsSetup!==false, color:u.color||0, pin:u.pin||'0000' }));
       const resp = await fetch('/sync-users', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ users: safeUsers }) });
       if (resp.ok) {
         const result = await resp.json();

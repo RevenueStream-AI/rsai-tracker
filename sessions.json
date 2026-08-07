@@ -110,7 +110,7 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-08-07T18:27:11.569Z",
-    "duration": 668,
+    "duration": 690,
     "date": "2026-08-07",
     "type": "tracked",
     "manual": false,
@@ -125,6 +125,24 @@
         "url": "/screenshots/uid_9/9_1786127334106.jpg",
         "time": "2026-08-07T18:28:54.106Z",
         "mouse": 471,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_9/9_1786127910302.jpg",
+        "time": "2026-08-07T18:38:30.302Z",
+        "mouse": 1824,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_9/9_1786127912038.jpg",
+        "time": "2026-08-07T18:38:32.038Z",
+        "mouse": 25,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_9/9_1786127913187.jpg",
+        "time": "2026-08-07T18:38:33.187Z",
+        "mouse": 4,
         "keys": 0
       }
     ],

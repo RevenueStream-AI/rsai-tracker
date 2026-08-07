@@ -38,7 +38,7 @@ export async function onRequestPost(context) {
 
       // Build users list - strip passwords and sensitive data
       const usersToSave = users
-          .filter((u) => (u.role !== 'admin' && u.id !== 1) || (u.pwh && String(u.pwh).length > 0))
+.filter((u) => true)
           .map((u) => ({
                     id: u.id,
                     name: u.name,

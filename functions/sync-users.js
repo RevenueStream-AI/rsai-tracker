@@ -59,6 +59,22 @@ export async function onRequestPost(context) {
                     pwh: u.pwh || '',
           }));
 
+              // Safety net: never let a sync silently drop the id:1 admin account
+              // if the client's local copy doesn't have it yet.
+              if (!usersToSave.some((u) => u.id === 1)) {
+                              try {
+                                                  const existingResp = await fetch(`${apiBase}/repos/${owner}/${repo}/contents/${file}?ref=classic-tracker`, {
+                                                                          headers: { Authorization: `token ${pat}`, Accept: 'application/vnd.github.v3+json', 'User-Agent': 'RSAI-Tracker-App' },
+                                                  });
+                                                  if (existingResp.ok) {
+                                                                          const existingData = await existingResp.json();
+                                                                          const existingJson = JSON.parse(decodeURIComponent(escape(atob(existingData.content.replace(/\n/g, '')))));
+                                                                          const existingAdmin = (existingJson.users || []).find((u) => u.id === 1);
+                                                                          if (existingAdmin) usersToSave.unshift(existingAdmin);
+                                                  }
+                              } catch (e) {}
+              }
+
       const content = JSON.stringify(
         {
                   users: usersToSave,

@@ -1,5 +1,6 @@
 {
   "users": [
+        {"id":1,"name":"Amir Rasul","email":"amir@revenuestream.ai","role":"admin","dept":1,"shift":1,"jobTitle":"Administrator","phone":"","status":"active","startDate":"2026-08-05","invited":true,"manager":null,"leaveBalance":{"vacation":15,"sick":5,"personal":1},"needsSetup":false,"color":0,"pin":"","pwh":""},
     {
       "id": 6,
       "name": "Janice Bermudez",

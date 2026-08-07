@@ -80,7 +80,7 @@
       "phone": "",
       "status": "active",
       "startDate": "2026-08-07",
-      "invited": false,
+      "invited": true,
       "manager": null,
       "leaveBalance": {
         "vacation": 6,
@@ -91,8 +91,31 @@
       "color": 4,
       "pin": "Gumral",
       "pwh": ""
+    },
+    {
+      "id": 10,
+      "name": "Daniel Mendoza",
+      "email": "daniel.mendoza@revenuestream.ai",
+      "role": "employee",
+      "dept": 1,
+      "shift": 1,
+      "jobTitle": "Medical Coder",
+      "phone": "",
+      "status": "active",
+      "startDate": "2026-08-07",
+      "invited": false,
+      "manager": null,
+      "leaveBalance": {
+        "vacation": 6,
+        "sick": 4,
+        "personal": 2
+      },
+      "needsSetup": true,
+      "color": 5,
+      "pin": "Gumral",
+      "pwh": ""
     }
   ],
-  "updated": "2026-08-07T18:13:10.603Z",
+  "updated": "2026-08-07T18:13:30.319Z",
   "note": "RSAI Tracker user database. Managed automatically by the app."
 }

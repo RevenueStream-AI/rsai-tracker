@@ -1,1 +1,29 @@
-{"users": [{"id": 1, "name": "Amir Rasul", "email": "amir@revenuestream.ai", "role": "admin", "dept": 0, "shift": 1, "jobTitle": "Administrator", "phone": "", "status": "active", "startDate": "2026-08-05", "invited": true, "manager": 0, "leaveBalance": {"vacation": 12, "sick": 6, "personal": 3}, "needsSetup": false, "color": 1, "pin": "", "pwh": ""}], "updated": "2026-08-05T00:00:00.000Z", "note": "RSAI Tracker user database. Managed automatically by the app."}
+{
+  "users": [
+    {
+      "id": 6,
+      "name": "Janice Bermudez",
+      "email": "janice.bermudez@revenuestream.ai",
+      "role": "employee",
+      "dept": 1,
+      "shift": 1,
+      "jobTitle": "Medical Biller",
+      "phone": "",
+      "status": "active",
+      "startDate": "2026-08-07",
+      "invited": false,
+      "manager": null,
+      "leaveBalance": {
+        "vacation": 6,
+        "sick": 4,
+        "personal": 2
+      },
+      "needsSetup": true,
+      "color": 1,
+      "pin": "Gumral",
+      "pwh": ""
+    }
+  ],
+  "updated": "2026-08-07T18:12:02.607Z",
+  "note": "RSAI Tracker user database. Managed automatically by the app."
+}

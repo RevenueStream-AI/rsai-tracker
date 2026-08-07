@@ -11,7 +11,7 @@
       "phone": "",
       "status": "active",
       "startDate": "2026-08-07",
-      "invited": false,
+      "invited": true,
       "manager": null,
       "leaveBalance": {
         "vacation": 6,
@@ -22,8 +22,31 @@
       "color": 1,
       "pin": "Gumral",
       "pwh": ""
+    },
+    {
+      "id": 7,
+      "name": "Advik Bargoti",
+      "email": "advik.bargoti@revenuestream.ai",
+      "role": "employee",
+      "dept": 1,
+      "shift": 1,
+      "jobTitle": "Automation Engineer",
+      "phone": "",
+      "status": "active",
+      "startDate": "2026-08-07",
+      "invited": false,
+      "manager": null,
+      "leaveBalance": {
+        "vacation": 6,
+        "sick": 4,
+        "personal": 2
+      },
+      "needsSetup": true,
+      "color": 2,
+      "pin": "Gumral",
+      "pwh": ""
     }
   ],
-  "updated": "2026-08-07T18:12:02.607Z",
+  "updated": "2026-08-07T18:12:23.537Z",
   "note": "RSAI Tracker user database. Managed automatically by the app."
 }

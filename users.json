@@ -114,31 +114,8 @@
       "color": 5,
       "pin": "Gumral",
       "pwh": ""
-    },
-    {
-      "id": 1,
-      "name": "Amir Rasul",
-      "email": "amir@revenuestream.ai",
-      "role": "admin",
-      "dept": 1,
-      "shift": 1,
-      "jobTitle": "Administrator",
-      "phone": "",
-      "status": "active",
-      "startDate": "2026-08-05",
-      "invited": true,
-      "manager": null,
-      "leaveBalance": {
-        "vacation": 15,
-        "sick": 5,
-        "personal": 1
-      },
-      "needsSetup": false,
-      "color": 1,
-      "pin": "0000",
-      "pwh": ""
     }
   ],
-  "updated": "2026-08-07T19:14:55.181Z",
+  "updated": "2026-08-07T19:16:37.700Z",
   "note": "RSAI Tracker user database. Managed automatically by the app."
 }

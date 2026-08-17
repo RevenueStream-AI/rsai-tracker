@@ -229,12 +229,31 @@
       }
     });
   </script>
+<script>
+/* Stale invitation links: drop the ticket so Clerk shows sign-in, not a
+   dead sign-up form. Runs before clerk-js so it never sees the ticket. */
+(function(){
+  try{
+    var u = new URL(location.href);
+    var junk = ['__clerk_ticket','__clerk_status','__clerk_invitation_token'];
+    var had = junk.filter(function(k){ return u.searchParams.has(k); });
+    if(!had.length) return;
+    var status = u.searchParams.get('__clerk_status');
+    junk.forEach(function(k){ u.searchParams.delete(k); });
+    history.replaceState(null, '', u.pathname + (u.search || '') + (u.hash || ''));
+    /* Leave a note for the user so the redirect is not silent. */
+    window.__rsaiStaleTicket = (status === 'sign_in' || status === 'complete')
+      ? 'You already have an account, so we have taken you to sign in.'
+      : 'That invitation link is no longer usable. Please sign in below.';
+  }catch(e){}
+})();
+</script>
 <!-- Clerk authentication -->
 <script
   async
   crossorigin="anonymous"
   data-clerk-publishable-key="pk_live_Y2xlcmsucmV2ZW51ZXN0cmVhbS5haSQ"
-  src="https://clerk.revenuestream.ai/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+  src="https://clerk.revenuestream.ai/npm/@clerk/clerk-js@6.29.1/dist/clerk.browser.js"
   type="text/javascript"
 ></script>
 <link rel="icon" href="https://revenuestream.ai/img/rsai-logo.png"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/><style id="rsaiBrand">:root{--font:"Plus Jakarta Sans","DM Sans",sans-serif;--primary:#1266e4;--primary-dark:#0d4fb8;--primary-light:#e9f1fe;--blue:#1266e4;--blue-dark:#0d4fb8;--blue-light:#e9f1fe;--teal:#01a56a;--purple:#c71fdd;--coral:#f98f2b}body,button,input,select,textarea{font-family:var(--font)}.rsai-logo{object-fit:contain;display:block}</style><script>(function(){var L='https://revenuestream.ai/img/rsai-logo.png',d1=false,d2=false;function mk(w){var i=document.createElement('img');i.src=L;i.className='rsai-logo';i.style.width=w+'px';i.style.height=w+'px';i.style.margin='0 auto';return i;}function swap(){if(!d1){var a=document.querySelector('#loginScreen svg');if(a){a.replaceWith(mk(64));d1=true;}}if(!d2){var b=document.querySelector('.logo-mark svg');if(b){b.replaceWith(mk(34));d2=true;}}}document.addEventListener('DOMContentLoaded',swap);setTimeout(swap,600);setTimeout(swap,2000);})();</script></head>
@@ -255,7 +274,30 @@
     </div>
     
     <div id="clerk-auth-mount"></div>
+<div id="clerkStaleNote" style="display:none;margin-top:12px;font-size:13px;color:#0d4fb8;background:#e9f1fe;border-radius:8px;padding:10px 12px;"></div>
 <div id="clerkAuthError" style="color:#e74c3c;font-size:13px;margin-top:12px;display:none;"></div><div id="clerkTimeoutMsg" style="display:none;margin-top:14px;font-size:13px;color:#7a5c00;">Taking longer than expected. <a href="#" onclick="location.reload();return false;" style="color:#2b6cb0;text-decoration:underline;">Click here to retry</a></div>
+<script>
+/* Once Clerk has actually rendered something, take the timeout warning down
+   and show any stale-invite note. Without this the warning stays visible
+   under a working form, which is what users were reporting as "broken". */
+(function(){
+  var tries = 0;
+  var iv = setInterval(function(){
+    var mount = document.getElementById('clerk-auth-mount');
+    var drawn = mount && mount.querySelector('.cl-card, .cl-rootBox, form, input');
+    if(drawn){
+      var t = document.getElementById('clerkTimeoutMsg');
+      if(t) t.style.display = 'none';
+      if(window.__rsaiStaleTicket){
+        var n = document.getElementById('clerkStaleNote');
+        if(n){ n.textContent = window.__rsaiStaleTicket; n.style.display = 'block'; }
+      }
+      clearInterval(iv);
+    }
+    if(++tries > 120) clearInterval(iv);   /* 60s, then stop looking */
+  }, 500);
+})();
+</script>
   </div>
 </div>
 
@@ -2938,8 +2980,24 @@ if(row){row.disabled=true;row.textContent='Sending...';}
 fetch('/invite-user',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:u.email,name:u.name})})
 .then(function(r){return r.json().then(function(d){return {ok:r.ok,data:d};});})
 .then(function(res){
-if(res.ok){ u.invited=true; addAudit(cu.id,'Invite sent','User',`Clerk invite sent to ${u.email}`); renderUsers(); }
-else { alert('Failed to send invite: '+((res.data&&res.data.error)||'Unknown error')); renderUsers(); }
+if(res.ok){
+  u.invited=true;
+  addAudit(cu.id,'Invite sent','User',`Clerk invite sent to ${u.email}`);
+  renderUsers();
+  alert('Invitation email sent to '+u.email+'.');
+}
+else {
+  /* An invitation is a SIGN-UP link. If the person already has an account
+     Clerk rejects it and they land on a form they cannot complete, so say so
+     rather than reporting a generic failure. */
+  var _err = (res.data && (res.data.error || res.data.message)) || 'Unknown error';
+  if(/already exist|already a member|duplicate/i.test(_err)){
+    alert(u.email+' already has an account, so an invitation will not work — an invite is a sign-up link.\n\nAsk them to go to the tracker and sign in directly. If they do not know their password, they should use "Forgot password" on the sign-in screen.');
+  } else {
+    alert('Failed to send invite: '+_err);
+  }
+  renderUsers();
+}
 })
 .catch(function(e){ alert('Failed to send invite: '+e.message); renderUsers(); });
 }

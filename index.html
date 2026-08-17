@@ -1134,6 +1134,7 @@ let auditLog = [
 
 let nuid=6,nsid=1,nlid=1,nhid=14,napid=3,naudid=2;
 let cu=null, tInt=null, ssInt=null, secs=0, running=false, stream=null, screenOk=false, curSess=null;
+var tEpoch = 0, tLastSync = 0;   /* FIX 2: wall-clock timer state */
 let mouseCount=0, keyCount=0;
 document.addEventListener('mousemove', function(){ mouseCount++; });
 document.addEventListener('keydown', function(){ keyCount++; });
@@ -1152,6 +1153,19 @@ const pad = n => String(n).padStart(2,'0');
 const fmtS = s => { const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60; return `${pad(h)}:${pad(m)}:${pad(sc)}`; };
 const fmtHM = s => `${Math.floor(s/3600)}h ${Math.floor((s%3600)/60)}m`;
 function azDateStr(d){ d=d||new Date(); return d.toLocaleDateString('en-CA',{timeZone:'America/Phoenix'}); }
+/* --- FIX 1: single source of truth for "this week" -------------------------
+   Was: every page built its own "now minus seven days" Date, a ROLLING 7-day
+   window, so Monday morning already showed last Monday's hours and the
+   Tracker / Insights / Users / Alerts pages disagreed with each other.
+   Now: all of them use the Monday 00:00 Arizona boundary. Arizona never
+   observes DST, so the -7h offset is exact year-round.                     */
+function weekStartAZ(d){
+  var az = new Date((d ? new Date(d) : new Date()).getTime() - 7*3600*1000);
+  var dow = (az.getUTCDay() + 6) % 7;           // 0 = Monday
+  az.setUTCHours(0,0,0,0);
+  az.setUTCDate(az.getUTCDate() - dow);
+  return new Date(az.getTime() + 7*3600*1000);  // back to a real instant
+}
 function azParts(d){ var s=azDateStr(d); var p=s.split('-'); return {y:+p[0], m:+p[1], d:+p[2]}; }
 function azMidnight(d){ var p=azParts(d); return new Date(Date.UTC(p.y,p.m-1,p.d,7,0,0)); }
 function azDay(d){ return azMidnight(d).getUTCDay(); }
@@ -1223,7 +1237,15 @@ function doLogin(){
     }, 30000);
   }
   // Trigger screen share on login so user sees Entire Screen prompt
-  if(!screenOk&&!localStorage.getItem('amc_screen_granted')){
+  /* --- FIX 4: no all-day capture session in the desktop app ---------------
+     Was: getDisplayMedia() at sign-in, stream held open until the tab closed
+     - even when not tracking. On Windows an always-live capture session makes
+     the mouse cursor flicker on some GPU drivers. The desktop app now grabs
+     each frame natively (~1s, only while tracking), so no browser stream and
+     no prompt. Browsers are unchanged: they cannot re-acquire the stream
+     without a user gesture, so they still hold one.                        */
+  if(window.RSAIDesktop && window.RSAIDesktop.captureScreenshot){ screenOk=true; }
+  else if(!screenOk&&!localStorage.getItem('amc_screen_granted')){
     var _ssOv=document.getElementById('ssInstructOverlay');
     if(_ssOv)_ssOv.style.display='flex';
     navigator.mediaDevices.getDisplayMedia({preferCurrentTab:false,video:{displaySurface:'monitor'},audio:false}).then(function(str){
@@ -1401,8 +1423,28 @@ async function startTimer(){
   const proj = document.getElementById('projInput').value.trim()||'Untitled';
   const cat = document.getElementById('catSelect').value;
   secs=0; running=true; var _at=JSON.parse(localStorage.getItem('amc_active_timer')||'null'); if(_at&&cu&&_at.uid===cu.id&&_at.startEpoch&&azDateStr(new Date(_at.startEpoch))===azDateStr()){var _hbGap=_at.lastHeartbeat?Math.floor((Date.now()-_at.lastHeartbeat)/1000):9999;secs=(_hbGap>120&&_at.secs)?_at.secs:Math.max(0,Math.floor((Date.now()-_at.startEpoch)/1000));} localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:Date.now()-secs*1000,project:proj,category:cat}));
-  var _urlVal=document.getElementById('urlInput')?document.getElementById('urlInput').value.trim():''; var _urlHost=''; if(_urlVal){try{_urlHost=new URL(_urlVal.indexOf('://')!==-1?_urlVal:'https://'+_urlVal).hostname;}catch(e){_urlHost=_urlVal;}} curSess = {id:nsid++,uid:cu.id,project:proj,category:cat,start:new Date(),duration:0,screenshots:[],date:todayStr(),type:'tracked',url:_urlHost||null};
-  sessions.push(curSess); setTimeout(syncSessionsToGitHub, 2000);
+  var _urlVal=document.getElementById('urlInput')?document.getElementById('urlInput').value.trim():''; var _urlHost=''; if(_urlVal){try{_urlHost=new URL(_urlVal.indexOf('://')!==-1?_urlVal:'https://'+_urlVal).hostname;}catch(e){_urlHost=_urlVal;}}
+  /* --- FIX 2/3: anchor the session to a real start instant ------------------
+     Was: start:new Date() with duration counted up from 0. On a resume that
+     produced a SECOND session covering wall-clock time the first session had
+     already claimed -> the same hours counted twice (11 overlapping pairs
+     were found in the AMC data). Now the session is identified by its true
+     start epoch, so a resume finds and continues the existing row.        */
+  tEpoch = Date.now() - secs*1000;
+  var _existing = sessions.filter(function(s){
+    return s.uid===cu.id && s.type==='tracked' &&
+           Math.abs(new Date(s.start).getTime() - tEpoch) < 60000;
+  })[0];
+  if(_existing){
+    curSess = _existing;
+    curSess.duration = Math.max(curSess.duration||0, secs);
+    curSess.project = proj; curSess.category = cat;
+    if(_urlHost) curSess.url = _urlHost;
+  } else {
+    curSess = {id:nsid++,uid:cu.id,project:proj,category:cat,start:new Date(tEpoch),duration:secs,screenshots:[],date:azDateStr(new Date(tEpoch)),type:'tracked',url:_urlHost||null};
+    sessions.push(curSess);
+  }
+  setTimeout(syncSessionsToGitHub, 2000);
   saveSessions(); // sync online status immediately
   document.getElementById('startBtn').disabled=false;
   document.getElementById('stopBtn').disabled=false;
@@ -1410,8 +1452,26 @@ async function startTimer(){
   document.getElementById('statusDot').classList.add('live');
   document.getElementById('statusText').textContent = 'Tracking: '+proj;
   document.getElementById('permNotice').style.display='none';
-  tInt = setInterval(()=>{ secs++; document.getElementById('timerDisp').textContent=fmtS(secs); if(curSess) curSess.duration=secs; if(cu){try{localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:Date.now()-secs*1000,secs:secs,lastHeartbeat:Date.now(),project:curSess?curSess.project:'',category:curSess?curSess.category:''}));}catch(e){}} updateMetrics(); if(secs % 30 === 0) syncSessionsToGitHub(); },1000);
-  if(!screenOk){
+  /* --- FIX 2: count time by the clock, not by ticks -----------------------
+     Was: a per-tick increment once per setInterval tick. Chrome throttles background-tab
+     timers to ~1 tick/minute, so a full 8h shift logged ~4h for anyone whose
+     tracker tab was not in the foreground. Now elapsed time is derived from
+     the start epoch, so throttling costs display smoothness, never hours.
+     The 30s sync is time-based too - with a throttled `secs` that jumps by
+     60, `secs % 30 === 0` could never fire.                               */
+  tLastSync = Date.now();
+  tInt = setInterval(()=>{
+    secs = Math.max(secs, Math.round((Date.now() - tEpoch)/1000));
+    document.getElementById('timerDisp').textContent=fmtS(secs);
+    if(curSess) curSess.duration=secs;
+    if(cu){try{localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:tEpoch,secs:secs,lastHeartbeat:Date.now(),project:curSess?curSess.project:'',category:curSess?curSess.category:''}));}catch(e){}}
+    updateMetrics();
+    if(Date.now() - tLastSync >= 30000){ tLastSync = Date.now(); syncSessionsToGitHub(); }
+  },1000);
+  if(window.RSAIDesktop && window.RSAIDesktop.captureScreenshot){
+    screenOk=true; schedSS(); capShot();          /* FIX 4: native, ephemeral */
+  }
+  else if(!screenOk){
     // Show pre-prompt instruction overlay
     var _ssInstr = document.getElementById('ssInstructOverlay');
     if(_ssInstr) _ssInstr.style.display='flex';
@@ -1431,17 +1491,42 @@ async function startTimer(){
 
 function schedSS(){ clearInterval(ssInt); ssInt=setInterval(capShot, 15*60*1000); }
 
-async function capShot(){
-  if(!stream||!curSess) return;
+/* --- FIX 5: idle / away detection (desktop app only) ----------------------
+   The desktop shell can see real OS input idle time, which a web page cannot.
+   When the user has been away past the threshold the app fires this hook; we
+   stop the timer so idle minutes are never billed as work.               */
+window.addEventListener('rsai:idle', function(ev){
   try{
-    const t=stream.getVideoTracks()[0]; const cap=new ImageCapture(t); const bmp=await cap.grabFrame();
-    const cv=document.createElement('canvas'); cv.width=bmp.width; cv.height=bmp.height;
-    cv.getContext('2d').drawImage(bmp,0,0);
-    const dataUrl=cv.toDataURL('image/jpeg',.5);
+    if(!running) return;
+    var away = (ev.detail && ev.detail.idleSeconds) || 0;
+    console.log('RSAI: idle for '+away+'s - stopping timer');
+    if(typeof stopTimer==='function') stopTimer();
+    var el=document.getElementById('statusText');
+    if(el) el.textContent='Paused - away for '+Math.round(away/60)+' min';
+  }catch(e){ console.warn('idle handler:', e); }
+});
+
+async function capShot(){
+  if(!curSess) return;
+  try{
+    let dataUrl;
+    /* FIX 4: in the desktop app open the capture, grab one frame, close it
+       again (~1s). In a browser keep using the long-lived stream, because
+       getDisplayMedia cannot be re-acquired without a user gesture.       */
+    if(window.RSAIDesktop && window.RSAIDesktop.captureScreenshot){
+      dataUrl = await window.RSAIDesktop.captureScreenshot();
+      if(!dataUrl) return;
+    } else {
+      if(!stream) return;
+      const t=stream.getVideoTracks()[0]; const cap=new ImageCapture(t); const bmp=await cap.grabFrame();
+      const cv=document.createElement('canvas'); cv.width=bmp.width; cv.height=bmp.height;
+      cv.getContext('2d').drawImage(bmp,0,0);
+      dataUrl=cv.toDataURL('image/jpeg',.5);
+    }
     const ts=Date.now();
     // Capture activity counts and reset
     // If both 0, add minimum activity since screen was being captured (stream was active)
-    var _minActivity = (running && stream) ? 1 : 0;
+    var _minActivity = (running && (stream || (window.RSAIDesktop && window.RSAIDesktop.captureScreenshot))) ? 1 : 0;   /* FIX 4 */
     const snapMouse=mouseCount+_minActivity, snapKeys=keyCount;
     mouseCount=0; keyCount=0;
     // Push immediately with dataUrl for instant preview
@@ -1600,7 +1685,7 @@ function fetchSessionsFromGitHub(){
 
 function updateMetrics(){
   if(!cu) return;
-  const td=todayStr(); const now=new Date(); const wa=new Date(now-7*24*3600*1000);
+  const td=todayStr(); const now=new Date(); const wa=weekStartAZ(now);
   let ts=0,wk=0,cnt=0;
   sessions.filter(s=>s.uid===cu.id&&s.duration).forEach(s=>{ if(s.date===td){ts+=s.duration;cnt++;} if(new Date(s.start)>=wa) wk+=s.duration; });
   document.getElementById('m-today').textContent=fmtHM(ts);
@@ -1821,7 +1906,7 @@ function renderActivity(expandUid){
       const uSess = sessions.filter(function(s){return s.uid===u.id && s.duration;});
       const totalSecs = uSess.reduce(function(a,s){return a+(s.duration||0);},0);
       const todaySecs = uSess.filter(function(s){return s.date===todayStr2;}).reduce(function(a,s){return a+(s.duration||0);},0);
-      const weekSecs = uSess.filter(function(s){return new Date(s.start)>=(new Date(now-7*24*3600*1000));}).reduce(function(a,s){return a+(s.duration||0);},0);
+      const weekSecs = uSess.filter(function(s){return new Date(s.start)>=(weekStartAZ(now));}).reduce(function(a,s){return a+(s.duration||0);},0);
         const monthStart2 = (function(){var p=azParts(now); return new Date(Date.UTC(p.y,p.m-1,1,7,0,0));})();
         const monthSecs = uSess.filter(function(s){return new Date(s.start)>=monthStart2;}).reduce(function(a,s){return a+(s.duration||0);},0);
         const periodSecs = _actPer==='date' && window._actDate ? uSess.filter(function(s){return s.start&&s.start.substring(0,10)===window._actDate;}).reduce(function(a,s){return a+(s.duration||0);},0) : _actPer==='today' ? todaySecs : _actPer==='month' ? monthSecs : weekSecs;
@@ -1922,7 +2007,7 @@ function renderScreenshots() {
   var selDate = document.getElementById('ss-filter-date') ? document.getElementById('ss-filter-date').value : '';
   var now = new Date();
   var todayStr = azDateStr(now);
-  var weekAgo = new Date(now - 7*24*3600*1000);
+  var weekAgo = weekStartAZ(now);
   var monthAgo = new Date(now - 30*24*3600*1000);
   var allSS = [];
   allSess.forEach(function(s) {
@@ -2088,7 +2173,7 @@ function renderInsights(selectedUid){
   const insEl = document.getElementById('page-insights');
   var oldPanel = document.getElementById('adminInsightsPanel');
   if(oldPanel) oldPanel.remove();
-  const td=todayStr(); const now=new Date(); const wa=new Date(now-7*24*3600*1000);
+  const td=todayStr(); const now=new Date(); const wa=weekStartAZ(now);
   if(isAdmin){
     var selectorHtml = '<div id="adminInsightsPanel" style="margin-bottom:16px">';
     selectorHtml += '<div class="card" style="margin-bottom:12px"><div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px">&#128202; All Team Overview  click a row for full insights</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="border-bottom:2px solid var(--border)"><th style="padding:8px 10px;text-align:left;color:var(--text2);font-weight:500">User</th><th style="padding:8px 10px;text-align:right;color:var(--text2);font-weight:500">Today</th><th style="padding:8px 10px;text-align:right;color:var(--text2);font-weight:500">This Week</th><th style="padding:8px 10px;text-align:right;color:var(--text2);font-weight:500">Sessions</th><th style="padding:8px 10px;text-align:right;color:var(--text2);font-weight:500">Top Project</th><th style="padding:8px 10px;text-align:center;color:var(--text2);font-weight:500">Detail</th></tr></thead><tbody>';
@@ -2734,7 +2819,7 @@ function renderUsers(){
   if (!cu) { cu = window._currentUser || users[0]; }
   if (!cu) return;
   const df=document.getElementById('uDeptF').value; const rf=document.getElementById('uRoleF').value;
-  const td=todayStr(); const now=new Date(); const wa=new Date(now-7*24*3600*1000);
+  const td=todayStr(); const now=new Date(); const wa=weekStartAZ(now);
   const filtered=users.filter(u=>(!df||u.dept==df)&&(!rf||u.role===rf));
   const roleBadge={admin:'badge-purple',manager:'badge-blue',employee:'badge-teal'};
   const stBadge={active:'<span class="badge badge-teal">active</span>',on_leave:'<span class="badge badge-amber">on leave</span>',inactive:'<span class="badge badge-gray">inactive</span>'};
@@ -3154,7 +3239,7 @@ function renderLeavePolicy(){
 
 //              HR ALERTS                                                                                                                                                                                                                                                                                                                                                                                                       
 function calcAlerts(){
-  const now=new Date(); const td=todayStr(); const wa=new Date(now-7*24*3600*1000);
+  const now=new Date(); const td=todayStr(); const wa=weekStartAZ(now);
   const md=+(document.getElementById('th-d')||{value:6}).value*3600;
   const mw=+(document.getElementById('th-w')||{value:30}).value*3600;
   const ms=+(document.getElementById('th-s')||{value:10}).value*60;
@@ -3300,7 +3385,7 @@ function openModal(mode,id){
     const u=users.find(x=>x.id===id); if(!u)return;
     const dept=departments.find(d=>d.id===u.dept); const shift=shifts.find(s=>s.id===u.shift); const mgr=users.find(x=>x.id===u.manager);
     const lb=u.leaveBalance||{}; const total=(lb.vacation||0)+(lb.sick||0)+(lb.personal||0);
-    const td=todayStr(); const now=new Date(); const wa=new Date(now-7*24*3600*1000);
+    const td=todayStr(); const now=new Date(); const wa=weekStartAZ(now);
     let ts=0,wk=0; sessions.filter(s=>s.uid===u.id&&s.duration).forEach(s=>{ if(s.date===td)ts+=s.duration; if(new Date(s.start)>=wa)wk+=s.duration; });
     body=`<div style="text-align:center;margin-bottom:20px"><div class="av av-lg" style="${avStyle(u.color)};margin:0 auto 10px">${ini(u.name)}</div><div style="font-size:16px;font-weight:600">${u.name}</div><div style="font-size:13px;color:var(--text2);margin-top:2px">${u.jobTitle||''}</div></div>
     <table style="width:100%;font-size:13px">
@@ -4295,8 +4380,17 @@ function resumeActiveTimer(){
         var _pi=document.getElementById('projInput'), _cs=document.getElementById('catSelect');
         if(_pi&&_proj) _pi.value=_proj;
         if(_cs&&_cat) _cs.value=_cat;
-        curSess={id:nsid++,uid:cu.id,project:_proj,category:_cat,start:new Date(at.startEpoch),duration:secs,screenshots:[],date:azDateStr(new Date(at.startEpoch)),type:'tracked',url:null};
-        sessions.push(curSess);
+        /* FIX 3: continue the existing row instead of adding a duplicate */
+        var _dup=sessions.filter(function(s){
+          return s.uid===cu.id && s.type==='tracked' &&
+                 Math.abs(new Date(s.start).getTime()-at.startEpoch)<60000;
+        })[0];
+        if(_dup){ curSess=_dup; curSess.duration=Math.max(curSess.duration||0,secs); }
+        else{
+          curSess={id:nsid++,uid:cu.id,project:_proj,category:_cat,start:new Date(at.startEpoch),duration:secs,screenshots:[],date:azDateStr(new Date(at.startEpoch)),type:'tracked',url:null};
+          sessions.push(curSess);
+        }
+        tEpoch=at.startEpoch;
         localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:at.startEpoch,project:_proj,category:_cat}));
         document.getElementById('startBtn').disabled=false;
         document.getElementById('stopBtn').disabled=false;
@@ -4305,7 +4399,15 @@ function resumeActiveTimer(){
         document.getElementById('statusText').textContent='Tracking: '+_proj;
         document.getElementById('permNotice').style.display='none';
         clearInterval(tInt);
-        tInt=setInterval(function(){ secs++; document.getElementById('timerDisp').textContent=fmtS(secs); if(curSess) curSess.duration=secs; if(cu){try{localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:at.startEpoch,project:_proj,category:_cat}));}catch(e){}} updateMetrics(); if(secs%30===0) syncSessionsToGitHub(); },1000);
+        tLastSync=Date.now();
+        tInt=setInterval(function(){
+          secs=Math.max(secs,Math.round((Date.now()-tEpoch)/1000));   /* FIX 2 */
+          document.getElementById('timerDisp').textContent=fmtS(secs);
+          if(curSess) curSess.duration=secs;
+          if(cu){try{localStorage.setItem('amc_active_timer',JSON.stringify({uid:cu.id,startEpoch:tEpoch,secs:secs,lastHeartbeat:Date.now(),project:_proj,category:_cat}));}catch(e){}}
+          updateMetrics();
+          if(Date.now()-tLastSync>=30000){ tLastSync=Date.now(); syncSessionsToGitHub(); }
+        },1000);
         saveSessions();
       };
       document.getElementById('staleDiscardBtn').onclick=function(){

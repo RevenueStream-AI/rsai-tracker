@@ -293,7 +293,7 @@
     <button class="nav-item admin-only" style="display:none" onclick="goTo('urlactivity')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>URL Activity
     </button>
-    <button class="nav-item" onclick="goTo('extension')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>Get Extension</button><div class="nav-section admin-only" style="display:none">Admin</div>
+    <button class="nav-item" onclick="goTo('extension')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>Get Extension</button><button class="nav-item" onclick="goTo('getapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg>Get App</button><div class="nav-section admin-only" style="display:none">Admin</div>
     <div class="admin-only" style="display:none">
       <button class="nav-item nav-parent" id="adminNavParent" onclick="toggleAdminNav()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Users &amp; Admin
@@ -580,7 +580,89 @@
 </div>
 
 <!-- ADMIN PAGE -->
-<div class="page" id="page-extension"><div class="page-header"><div class="page-title">Get the Browser Extension</div><div class="page-sub">Automatically track time spent per website. No manual entry needed.</div></div><div class="card" style="padding:24px;max-width:640px"><p>The browser extension runs quietly in the background and reports which websites you visit and how long you spend on each, feeding directly into the URL Activity report.</p><p style="margin-top:16px"><a href="https://tracker.revenuestream.ai/download-extension" style="display:inline-block;padding:10px 20px;background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">Download Extension (.zip)</a></p><ol style="margin-top:20px;line-height:1.8"><li>Unzip the downloaded file.</li><li>Open Chrome and go to <b>chrome://extensions</b></li><li>Turn on <b>Developer mode</b> (top right toggle).</li><li>Click <b>Load unpacked</b> and select the unzipped folder.</li><li>Click the new extension icon in your toolbar and enter the email you use to log into this tracker, then click Save.</li></ol><p style="margin-top:16px;color:var(--text3);font-size:13px">That's it, it will start reporting your browsing activity automatically within a minute.</p></div></div><div class="page" id="page-admin">
+<div class="page" id="page-extension"><div class="page-header"><div class="page-title">Get the Browser Extension</div><div class="page-sub">Automatically track time spent per website. No manual entry needed.</div></div><div class="card" style="padding:24px;max-width:640px"><p>The browser extension runs quietly in the background and reports which websites you visit and how long you spend on each, feeding directly into the URL Activity report.</p><p style="margin-top:16px"><a href="https://tracker.revenuestream.ai/download-extension" style="display:inline-block;padding:10px 20px;background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">Download Extension (.zip)</a></p><ol style="margin-top:20px;line-height:1.8"><li>Unzip the downloaded file.</li><li>Open Chrome and go to <b>chrome://extensions</b></li><li>Turn on <b>Developer mode</b> (top right toggle).</li><li>Click <b>Load unpacked</b> and select the unzipped folder.</li><li>Click the new extension icon in your toolbar and enter the email you use to log into this tracker, then click Save.</li></ol><p style="margin-top:16px;color:var(--text3);font-size:13px">That's it, it will start reporting your browsing activity automatically within a minute.</p></div></div><div class="page" id="page-getapp">
+  <div class="page-header"><div><div class="page-title">Get the Desktop App</div><div class="page-sub">Track time without keeping a browser tab open. Windows and macOS.</div></div></div>
+  <div class="content" style="padding:24px">
+
+    <div class="card" style="padding:20px 24px;max-width:900px;margin-bottom:20px">
+      <div style="font-size:14px;color:var(--text2);line-height:1.7">
+        The desktop app loads this same tracker, and adds the three things a browser cannot do:
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+        <div style="background:var(--surface2);border-radius:var(--r);padding:14px 16px">
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px">No screen-share prompt</div>
+          <div style="font-size:12px;color:var(--text3);line-height:1.6">Screenshots are captured natively. No &ldquo;Entire Screen&rdquo; picker, and no capture session left running all day.</div>
+        </div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:14px 16px">
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px">Accurate away time</div>
+          <div style="font-size:12px;color:var(--text3);line-height:1.6">Sees real keyboard and mouse idle time across your whole machine, and stops the timer after 5 minutes away.</div>
+        </div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:14px 16px">
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px">Runs in the background</div>
+          <div style="font-size:12px;color:var(--text3);line-height:1.6">Lives in the tray or menu bar, starts with your computer, and is never throttled by a background tab.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px">
+
+      <!-- Windows -->
+      <div class="card" id="appCardWin" style="padding:24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+          <svg width="30" height="30" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#0078d4"/><rect x="11" y="1" width="9" height="9" fill="#0078d4"/><rect x="1" y="11" width="9" height="9" fill="#0078d4"/><rect x="11" y="11" width="9" height="9" fill="#0078d4"/></svg>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--text)">Windows</div>
+            <div style="font-size:12px;color:var(--text3)">Windows 10 and 11, 64-bit</div>
+          </div>
+          <span id="appBadgeWin" style="display:none;margin-left:auto;background:var(--teal-light);color:var(--teal-dark);font-size:11px;font-weight:700;padding:4px 9px;border-radius:99px">YOUR SYSTEM</span>
+        </div>
+        <div id="appMetaWin" class="app-meta" style="font-family:var(--mono);font-size:12px;color:var(--text3);margin:14px 0 16px">Loading build info&hellip;</div>
+        <a id="appDlWin" class="btn btn-primary" style="width:100%;justify-content:center;text-decoration:none" href="/download-app?os=win">Download for Windows</a>
+        <ol style="margin:18px 0 0 18px;line-height:1.9;font-size:13px;color:var(--text2)">
+          <li>Run <b>RSAI-Tracker-Setup.exe</b>.</li>
+          <li>Windows will warn &ldquo;Windows protected your PC&rdquo; &mdash; click <b>More info</b>, then <b>Run anyway</b>. The app is not code-signed yet.</li>
+          <li>Sign in with the same email you use here.</li>
+          <li>Leave it running. It sits in the tray by the clock; right-click there to start, stop, or quit.</li>
+        </ol>
+      </div>
+
+      <!-- macOS -->
+      <div class="card" id="appCardMac" style="padding:24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#111"><path d="M16.3 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.5-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7 1.4 0 1.8.7 3 .7 1.2 0 2-1.1 2.8-2.2.6-.9.9-1.7 1-2.1-.1 0-2.3-.9-2.3-3.6zM14.2 5.6c.6-.8 1-1.8.9-2.9-.9.1-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2.1-.5 2.7-1.3z"/></svg>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--text)">macOS</div>
+            <div style="font-size:12px;color:var(--text3)">macOS 11 Big Sur or newer</div>
+          </div>
+          <span id="appBadgeMac" style="display:none;margin-left:auto;background:var(--teal-light);color:var(--teal-dark);font-size:11px;font-weight:700;padding:4px 9px;border-radius:99px">YOUR SYSTEM</span>
+        </div>
+        <div id="appMetaMac" class="app-meta" style="font-family:var(--mono);font-size:12px;color:var(--text3);margin:14px 0 16px">Loading build info&hellip;</div>
+        <div style="display:flex;gap:8px">
+          <a id="appDlMacArm" class="btn btn-primary" style="flex:1;justify-content:center;text-decoration:none" href="/download-app?os=mac&amp;arch=arm64">Apple Silicon</a>
+          <a id="appDlMacIntel" class="btn btn-secondary" style="flex:1;justify-content:center;text-decoration:none" href="/download-app?os=mac&amp;arch=x64">Intel</a>
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:8px" id="appMacChipHint">Apple menu &rarr; About This Mac shows which chip you have.</div>
+        <ol style="margin:14px 0 0 18px;line-height:1.9;font-size:13px;color:var(--text2)">
+          <li>Open the <b>.dmg</b> and drag <b>RSAI Tracker</b> into Applications.</li>
+          <li>The first launch must be <b>right-click &rarr; Open &rarr; Open</b>. Double-clicking shows &ldquo;cannot be verified&rdquo; and stops, because the app is not notarized yet.</li>
+          <li>Allow screen recording once: <b>System Settings &rarr; Privacy &amp; Security &rarr; Screen Recording</b> &rarr; switch on RSAI Tracker, then quit and reopen. The app will prompt and link you there.</li>
+          <li>Sign in with the same email you use here. It lives in the menu bar at the top right.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <div class="card" style="padding:16px 20px;max-width:900px;margin-top:20px;background:var(--amber-light);border-color:var(--amber)">
+      <div style="font-size:13px;color:var(--amber-dark);line-height:1.7">
+        <b>Both warnings above are expected.</b> These builds are not code-signed, so Windows and macOS both flag them as coming from an unidentified developer. Nothing is wrong with the download. Signing certificates remove the warnings and can be added later without changing anything you install today.
+      </div>
+    </div>
+
+    <div style="font-size:12px;color:var(--text3);margin-top:14px;max-width:900px" id="appReleaseNotes"></div>
+
+  </div>
+</div>
+<div class="page" id="page-admin">
   <div class="page-header"><div class="page-title">Users & admin</div><div class="page-sub">Manage remote team, sessions, and approvals</div></div>
   <div class="inner-tabs">
     <button class="inner-tab active" onclick="showInner('admin','users')">Users</button>
@@ -4539,6 +4621,94 @@ window.addEventListener('load', async function () { setTimeout(function(){ var _
     console.error('Clerk init failed', e); var __tm2 = document.getElementById('clerkTimeoutMsg'); if (__tm2) { __tm2.style.display = 'block'; }
   }
 });
+</script>
+<script>
+/* ---------------------------------------------------------------------------
+   Get App page. Build info comes from /desktop-version.json so a new release
+   is a one-file edit; the Electron update notifier reads the same file.
+--------------------------------------------------------------------------- */
+function rsaiFmtBytes(n){
+  if(!n || isNaN(n)) return null;
+  var mb = n/1048576;
+  return (mb >= 100 ? Math.round(mb) : mb.toFixed(1)) + ' MB';
+}
+
+function rsaiDetectOS(){
+  var p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+  var ua = navigator.userAgent || '';
+  if(/Win/i.test(p) || /Windows/i.test(ua)) return 'win';
+  if(/Mac/i.test(p) || /Mac OS X/i.test(ua)) return 'mac';
+  return null;
+}
+
+async function renderDesktopApp(){
+  var os = rsaiDetectOS();
+  if(os === 'win'){ var b=document.getElementById('appBadgeWin'); if(b) b.style.display='inline-block'; }
+  if(os === 'mac'){ var b2=document.getElementById('appBadgeMac'); if(b2) b2.style.display='inline-block'; }
+
+  var info = null;
+  try{
+    var res = await fetch('/desktop-version.json?_=' + Date.now(), {cache:'no-store'});
+    if(res.ok) info = await res.json();
+  }catch(e){ /* offline, or manifest not published yet */ }
+
+  var setMeta = function(id, text){ var el=document.getElementById(id); if(el) el.textContent = text; };
+
+  if(!info || !info.version){
+    setMeta('appMetaWin', 'Build info unavailable — the download still works.');
+    setMeta('appMetaMac', 'Build info unavailable — the download still works.');
+    return;
+  }
+
+  var when = '';
+  if(info.released){
+    var d = new Date(info.released + 'T12:00:00Z');
+    if(!isNaN(d)) when = d.toLocaleDateString(undefined, {month:'short', year:'numeric'});
+  }
+
+  var builds = info.builds || [];
+  var find = function(o, a){ return builds.filter(function(b){ return b.os===o && (!a || b.arch===a); })[0]; };
+
+  var win = find('win');
+  var parts = ['v' + info.version];
+  if(win && win.size) parts.push(rsaiFmtBytes(win.size));
+  if(when) parts.push(when);
+  setMeta('appMetaWin', parts.join('  ·  '));
+
+  var arm = find('mac','arm64'), intel = find('mac','x64');
+  var mparts = ['v' + info.version];
+  var sz = (arm && arm.size) || (intel && intel.size);
+  if(sz) mparts.push(rsaiFmtBytes(sz));
+  if(when) mparts.push(when);
+  setMeta('appMetaMac', mparts.join('  ·  '));
+
+  /* Grey out an architecture that has not been published yet, rather than
+     handing someone a button that 404s. */
+  var gate = function(id, build){
+    var el = document.getElementById(id);
+    if(!el) return;
+    if(build && build.published !== false) return;
+    el.style.opacity = '0.45';
+    el.style.pointerEvents = 'none';
+    el.setAttribute('aria-disabled','true');
+    el.title = 'Not published yet';
+    if(el.textContent.indexOf('coming') === -1) el.textContent = el.textContent + ' — coming soon';
+  };
+  gate('appDlWin', win); gate('appDlMacArm', arm); gate('appDlMacIntel', intel);
+
+  var notes = document.getElementById('appReleaseNotes');
+  if(notes && info.notes) notes.textContent = 'What’s new in v' + info.version + ': ' + info.notes;
+}
+
+/* Render on navigation, and once now in case someone deep-links here. */
+(function(){
+  var _goTo = window.goTo;
+  if(typeof _goTo === 'function'){
+    window.goTo = function(p){ _goTo(p); if(p === 'getapp') renderDesktopApp(); };
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderDesktopApp);
+  else renderDesktopApp();
+})();
 </script>
 </body>
 </html>

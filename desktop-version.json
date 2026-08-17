@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "released": "2026-08-17",
+  "notes": "First desktop release. Silent screenshots, OS-level idle detection, tray icon and start-at-login.",
+  "downloadUrl": "https://tracker.revenuestream.ai/",
+  "builds": [
+    {
+      "os": "win",
+      "arch": "x64",
+      "label": "Windows 10 & 11 (64-bit)",
+      "file": "RSAI-Tracker-Setup-1.0.0-x64.exe",
+      "size": 95271669,
+      "published": true
+    },
+    {
+      "os": "mac",
+      "arch": "arm64",
+      "label": "macOS Apple Silicon",
+      "file": "RSAI-Tracker-1.0.0-arm64.dmg",
+      "size": null,
+      "published": false
+    },
+    {
+      "os": "mac",
+      "arch": "x64",
+      "label": "macOS Intel",
+      "file": "RSAI-Tracker-1.0.0-x64.dmg",
+      "size": null,
+      "published": false
+    }
+  ]
+}

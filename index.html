@@ -256,6 +256,7 @@
   src="https://clerk.revenuestream.ai/npm/@clerk/clerk-js@6.29.1/dist/clerk.browser.js"
   type="text/javascript"
 ></script>
+<script async crossorigin="anonymous" src="https://clerk.revenuestream.ai/npm/@clerk/ui@1/dist/ui.browser.js" type="text/javascript"></script>
 <link rel="icon" href="https://revenuestream.ai/img/rsai-logo.png"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/><style id="rsaiBrand">:root{--font:"Plus Jakarta Sans","DM Sans",sans-serif;--primary:#1266e4;--primary-dark:#0d4fb8;--primary-light:#e9f1fe;--blue:#1266e4;--blue-dark:#0d4fb8;--blue-light:#e9f1fe;--teal:#01a56a;--purple:#c71fdd;--coral:#f98f2b}body,button,input,select,textarea{font-family:var(--font)}.rsai-logo{object-fit:contain;display:block}</style><script>(function(){var L='https://revenuestream.ai/img/rsai-logo.png',d1=false,d2=false;function mk(w){var i=document.createElement('img');i.src=L;i.className='rsai-logo';i.style.width=w+'px';i.style.height=w+'px';i.style.margin='0 auto';return i;}function swap(){if(!d1){var a=document.querySelector('#loginScreen svg');if(a){a.replaceWith(mk(64));d1=true;}}if(!d2){var b=document.querySelector('.logo-mark svg');if(b){b.replaceWith(mk(34));d2=true;}}}document.addEventListener('DOMContentLoaded',swap);setTimeout(swap,600);setTimeout(swap,2000);})();</script></head>
 <body>
 
@@ -4665,7 +4666,7 @@ async function captureLocationAndWeather(user){try{if(!user||!navigator.geolocat
 }
 window.addEventListener('load', async function () { setTimeout(function(){ var __ls = document.getElementById('loginScreen'); var __tm = document.getElementById('clerkTimeoutMsg'); if (__ls && __ls.style.display !== 'none' && __tm) { __tm.style.display = 'block'; } }, 8000);
   try {
-    await Clerk.load(); try { await window.usersReady; } catch (e) {}
+    await Clerk.load(window.__internal_ClerkUICtor ? { ui: { ClerkUI: window.__internal_ClerkUICtor } } : {}); try { await window.usersReady; } catch (e) {}
     if (Clerk.user) {
       amcMatchClerkUserAndLogin(Clerk.user);
     } else {

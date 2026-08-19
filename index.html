@@ -88,6 +88,7 @@
         function fmtD(iso){if(!iso)return '';var p=iso.split('-');if(p.length===3)return p[1]+'/'+p[2]+'/'+p[0];return iso;}
         function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
         function renderPayroll(){
+  var _cP=(typeof cu!=='undefined'&&cu)||window._currentUser;if(!_cP||_cP.role!=='admin')return;
   (function(){
     var anchor=new Date(Date.UTC(2026,5,1,7,0,0)),today=new Date();
     var diff=Math.max(0,Math.floor((today-anchor)/(14*86400000)));
@@ -158,7 +159,7 @@
         function build(){
               var nav=document.querySelector('.sidebar-nav');if(!nav||document.getElementById('navPayroll'))return;
               var thBtn=Array.prototype.find.call(nav.querySelectorAll('button.nav-item'),function(b){return /titles\s*&\s*holidays/i.test(b.textContent);});
-              var btn=document.createElement('button');btn.id='navPayroll';btn.className='nav-item admin-only';btn.textContent='Payroll';btn.setAttribute('onclick',"goTo('payroll')");
+              var btn=document.createElement('button');btn.id='navPayroll';btn.className='nav-item admin-only';btn.style.display=(window._currentUser&&window._currentUser.role==='admin')?'':'none';btn.textContent='Payroll';btn.setAttribute('onclick',"goTo('payroll')");
               if(thBtn&&thBtn.nextSibling)nav.insertBefore(btn,thBtn.nextSibling);else nav.appendChild(btn);
               injectStyle();
               var anyPage=document.querySelector('.page');if(!anyPage)return;
@@ -321,7 +322,7 @@
     <button class="nav-item" onclick="goTo('activity')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Activity
     </button>
-    <button class="nav-item" onclick="goTo('insights')">
+    <button class="nav-item emp-extra" onclick="goTo('insights')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Insights
     </button>
     <button class="nav-item" onclick="goTo('reports')">
@@ -330,7 +331,7 @@
     <button class="nav-item" onclick="goTo('leaves')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Leaves
     </button>
-    <button class="nav-item" onclick="goTo('screenshots')">
+    <button class="nav-item emp-extra" onclick="goTo('screenshots')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Screenshots
     </button>
     <button class="nav-item admin-only" style="display:none" onclick="goTo('urlactivity')">
@@ -370,7 +371,7 @@
     <button class="nav-item admin-only" style="display:none" onclick="goTo('titles')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><line x1="16" y1="21" x2="16" y2="7"/><line x1="8" y1="21" x2="8" y2="7"/></svg>Titles &amp; Holidays
     </button>
-    <button class="nav-item admin-only" onclick="goTo('timeAdjPage');taClearDate()" id="nav-timeAdjPage">
+    <button class="nav-item admin-only" style="display:none" onclick="goTo('timeAdjPage');taClearDate()" id="nav-timeAdjPage">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="14"/></svg>Time Adjustments
     </button>
     <button class="nav-item admin-only" style="display:none" onclick="goTo('integrations')">
@@ -1336,14 +1337,16 @@ function doLogin(){
   const av = document.getElementById('sidebarAv');
   av.textContent = ini(u.name); av.style.cssText = avStyle(u.color);
   if(u.role==='admin'||u.role==='manager'){
-    document.querySelectorAll('.admin-only').forEach(el=>el.style.display='');
+    document.querySelectorAll('.admin-only,.emp-extra').forEach(el=>el.style.display='');
     if(u.role!=='admin'){
       var _payrollNavEl2=document.getElementById('navPayroll'); if(_payrollNavEl2)_payrollNavEl2.style.display='none';
       var _taNavEl2=document.getElementById('nav-timeAdjPage'); if(_taNavEl2)_taNavEl2.style.display='none';
     }
   } else {
+    document.querySelectorAll('.admin-only,.emp-extra').forEach(function(el){el.style.display='none';});
     var _isLead = teams.some(function(t){return t.lead===u.id;});
     if(_isLead){
+      document.querySelectorAll('.emp-extra').forEach(function(el){el.style.display='';});
       var _dashNav=document.querySelector('.nav-item.admin-only[onclick*="dashboard"]');
       if(_dashNav)_dashNav.style.display='';
       var _urlNav=document.querySelector('.nav-item.admin-only[onclick*="urlactivity"]');
@@ -1493,6 +1496,14 @@ function doLogout(){
 
 //              NAVIGATION                                                                                                                                                                                                                                                                                                                                                                                                 
 function goTo(name){
+  var _cuG=(typeof cu!=='undefined'&&cu)||window._currentUser;var _rG=_cuG&&_cuG.role;
+  var _adminOnlyPages={payroll:1,timeAdjPage:1};
+  var _mgrPages={admin:1,titles:1,integrations:1,alerts:1,audit:1};
+  var _leadPages={dashboard:1,urlactivity:1,insights:1,screenshots:1};
+  var _isTLG=false;try{_isTLG=(typeof isTeamLead==='function')&&isTeamLead();}catch(e){}
+  if(_adminOnlyPages[name]&&_rG!=='admin')return;
+  if(_mgrPages[name]&&_rG!=='admin'&&_rG!=='manager')return;
+  if(_leadPages[name]&&_rG!=='admin'&&_rG!=='manager'&&!_isTLG)return;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
@@ -2118,7 +2129,10 @@ function renderScreenshots() {
   var allSess = _ghOrLocal
   var _isTLScr = isTeamLead();
   var _tlMemberIdsScr = _isTLScr ? getMyTeamMemberIds() : [];
-  var allU = _isTLScr ? users.filter(function(u){return _tlMemberIdsScr.indexOf(u.id)!==-1;}) : users.filter(function(u) { return u.role !== 'admin'; });
+  var _cuScr=(typeof cu!=='undefined'&&cu)||window._currentUser;
+  var _ownOnlyScr=!!_cuScr&&_cuScr.role!=='admin'&&_cuScr.role!=='manager'&&!_isTLScr;
+  var allU = _ownOnlyScr ? users.filter(function(u){return u.id===_cuScr.id;}) : (_isTLScr ? users.filter(function(u){return _tlMemberIdsScr.indexOf(u.id)!==-1;}) : users.filter(function(u) { return u.role !== 'admin'; }));
+  var _ssUFEl=document.getElementById('ss-filter-user');if(_ssUFEl){_ssUFEl.style.display=_ownOnlyScr?'none':'';}
   var userFilter = document.getElementById('ss-filter-user');
   if (userFilter && userFilter.options.length === 1) {
     allU.forEach(function(u) {
@@ -2138,6 +2152,7 @@ function renderScreenshots() {
   allSess.forEach(function(s) {
     var user = users.find(function(u) { return u.id === s.uid; });
     if (!user || user.role === 'admin') return;
+    if (_ownOnlyScr && s.uid !== _cuScr.id) return;
     if (selUser && selUser !== String(s.uid)) return;
     (s.screenshots || []).forEach(function(ss) {
       var d = new Date(ss.time || ss.timestamp);
@@ -2399,6 +2414,7 @@ function renderInsights(selectedUid){
 }
 function populateRptUsers(){
   const el=document.getElementById('rptUser'); const cv=el.value;
+  el.style.display=(cu&&(cu.role==='admin'||cu.role==='manager'))?'':'none';
   const emps=cu.role==='admin'?users.filter(u=>u.role!=='admin'):cu.role==='manager'?users.filter(u=>u.role==='employee'):[cu];
   el.innerHTML='<option value="">All users</option>'+emps.map(u=>`<option value="${u.id}"${cv==u.id?' selected':''}>${u.name}</option>`).join('');
 }
@@ -3160,6 +3176,7 @@ function taClearDate(){
   renderTimeAdjPage();
 }
 function renderTimeAdjPage(){
+  var _cT=(typeof cu!=='undefined'&&cu)||window._currentUser;if(!_cT||_cT.role!=='admin')return;
   var allSess=window._allSessions||loadSessions()||[];
   var userSel=document.getElementById('taUserSel');
   var dateSel=document.getElementById('taDateSel');
@@ -4053,6 +4070,13 @@ function completeLogin(user) {
       var _taNavEl = document.getElementById('nav-timeAdjPage');
       if (_taNavEl) _taNavEl.style.display = 'none';
     }
+    document.querySelectorAll('.emp-extra').forEach(function(el){el.style.display='';});
+  } else if (u) {
+    document.querySelectorAll('.admin-only,.emp-extra').forEach(function(el){el.style.display='none';});
+    try { var _isLeadCL = (typeof teams!=='undefined'&&teams||[]).some(function(t){return t.lead===u.id;});
+      if (_isLeadCL) { var _dN=document.querySelector('.nav-item.admin-only[onclick*="dashboard"]'); if(_dN)_dN.style.display='';
+        var _uN=document.querySelector('.nav-item.admin-only[onclick*="urlactivity"]'); if(_uN)_uN.style.display='';
+        document.querySelectorAll('.emp-extra').forEach(function(el){el.style.display='';}); } } catch(e) {}
   }
   
   // Hide login screen

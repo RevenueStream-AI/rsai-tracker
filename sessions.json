@@ -85,50 +85,6 @@
     "url": null
   },
   {
-    "id": 17,
-    "uid": 6,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-20T15:55:45.671Z",
-    "duration": 3665,
-    "date": "2026-08-20",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_6/17_1787241357866.jpg",
-        "time": "2026-08-20T15:55:57.866Z",
-        "mouse": 162,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_6/17_1787242257744.jpg",
-        "time": "2026-08-20T16:10:57.744Z",
-        "mouse": 223,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_6/17_1787243157727.jpg",
-        "time": "2026-08-20T16:25:57.727Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_6/17_1787244057732.jpg",
-        "time": "2026-08-20T16:40:57.732Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_6/17_1787244957756.jpg",
-        "time": "2026-08-20T16:55:57.756Z",
-        "mouse": 1,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
     "id": 1,
     "uid": 1,
     "project": "RSAI Project",
@@ -224,6 +180,50 @@
     "type": "tracked",
     "manual": false,
     "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 17,
+    "uid": 6,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-20T15:55:45.671Z",
+    "duration": 3695,
+    "date": "2026-08-20",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_6/17_1787241357866.jpg",
+        "time": "2026-08-20T15:55:57.866Z",
+        "mouse": 162,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_6/17_1787242257744.jpg",
+        "time": "2026-08-20T16:10:57.744Z",
+        "mouse": 223,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_6/17_1787243157727.jpg",
+        "time": "2026-08-20T16:25:57.727Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_6/17_1787244057732.jpg",
+        "time": "2026-08-20T16:40:57.732Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_6/17_1787244957756.jpg",
+        "time": "2026-08-20T16:55:57.756Z",
+        "mouse": 1,
+        "keys": 0
+      }
+    ],
     "url": null
   }
 ]

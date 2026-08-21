@@ -16,9 +16,10 @@
       "os": "mac",
       "arch": "arm64",
       "label": "macOS Apple Silicon",
-      "file": "RSAI-Tracker-1.0.0-arm64.dmg",
-      "size": null,
-      "published": false
+      "file": "RSAI-Tracker-1.0.0-arm64.zip",
+      "size": 94886733,
+      "published": true,
+      "url": "/mac-download.html"
     },
     {
       "os": "mac",

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Download RSAI Tracker for macOS</title>
+<link rel="icon" href="https://revenuestream.ai/img/rsai-logo.png"/>
+<style>
+  body{font-family:"Plus Jakarta Sans","DM Sans",-apple-system,sans-serif;background:#eef2f7;color:#2c3347;
+       display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+  .card{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1),0 8px 32px rgba(0,0,0,.06);
+        padding:36px 40px;max-width:480px;text-align:center}
+  img.logo{width:56px;height:56px;object-fit:contain;margin-bottom:12px}
+  h1{font-size:20px;margin:0 0 6px}
+  p{font-size:14px;color:#5a607f;line-height:1.6;margin:8px 0}
+  .bar{height:8px;background:#e9f1fe;border-radius:99px;overflow:hidden;margin:18px 0 8px}
+  .fill{height:100%;width:0%;background:#1266e4;border-radius:99px;transition:width .3s}
+  .status{font-size:13px;color:#8a93b0;font-family:ui-monospace,monospace}
+  .ok{color:#0a7a5b;font-weight:600}
+  .err{color:#b91c1c;font-weight:600}
+  a.btn{display:inline-block;margin-top:14px;padding:10px 22px;background:#1266e4;color:#fff;border-radius:8px;
+        text-decoration:none;font-weight:600;font-size:14px}
+  ol{text-align:left;font-size:13px;color:#5a607f;line-height:1.9;margin:16px 0 0;padding-left:20px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="https://revenuestream.ai/img/rsai-logo.png" alt="RSAI"/>
+  <h1>RSAI Tracker for macOS</h1>
+  <p>Apple Silicon &middot; v1.0.0 &middot; 90&nbsp;MB</p>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <div class="status" id="status">Preparing download&hellip;</div>
+  <div id="after" style="display:none">
+    <p class="ok">Saved to your Downloads folder as RSAI-Tracker-1.0.0-arm64.zip</p>
+    <ol>
+      <li>Unzip it and drag <b>RSAI Tracker</b> into Applications.</li>
+      <li>First launch: if macOS says the app &ldquo;cannot be verified&rdquo;, open <b>System Settings &rarr; Privacy &amp; Security</b>, scroll down, click <b>Open Anyway</b>.</li>
+      <li>Allow <b>Screen Recording</b> when prompted, then quit and reopen the app.</li>
+      <li>Sign in with the same email you use on the tracker.</li>
+    </ol>
+  </div>
+  <a class="btn" id="retry" style="display:none" href="javascript:location.reload()">Try again</a>
+</div>
+<script>
+(async function(){
+  var fill=document.getElementById('fill'), status=document.getElementById('status');
+  var API='https://api.github.com/repos/RevenueStream-AI/rsai-tracker/releases/assets/';
+  var PARTS=[{id:522744587,size:26214400},{id:522744810,size:26214400},{id:522745048,size:26214400},{id:522745239,size:16243533}];
+  var TOTAL=PARTS.reduce(function(t,p){return t+p.size;},0);
+  var SHA='b0f558f12edc3e4dc4320eaa70546be32bfd81a346e1e6c5d135a6e6b1ce54d0';
+  try{
+    var got=0, blobs=[];
+    for(var i=0;i<PARTS.length;i++){
+      status.textContent='Downloading part '+(i+1)+' of '+PARTS.length+'…';
+      var res=await fetch(API+PARTS[i].id,{headers:{'Accept':'application/octet-stream'}});
+      if(!res.ok) throw new Error('part '+(i+1)+' failed (HTTP '+res.status+')');
+      var reader=res.body.getReader(), chunks=[];
+      while(true){var r=await reader.read(); if(r.done)break; chunks.push(r.value); got+=r.value.length;
+        fill.style.width=Math.min(96,Math.round(got/TOTAL*96))+'%';}
+      blobs.push(new Blob(chunks));
+    }
+    status.textContent='Verifying…';
+    var joined=new Blob(blobs,{type:'application/zip'});
+    var digest=await crypto.subtle.digest('SHA-256',await joined.arrayBuffer());
+    var hex=Array.prototype.map.call(new Uint8Array(digest),function(b){return b.toString(16).padStart(2,'0');}).join('');
+    if(hex!==SHA) throw new Error('checksum mismatch — please try again');
+    fill.style.width='100%';
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(joined);
+    a.download='RSAI-Tracker-1.0.0-arm64.zip';
+    document.body.appendChild(a); a.click();
+    status.innerHTML='<span class="ok">Verified ✓</span>';
+    document.getElementById('after').style.display='block';
+  }catch(e){
+    status.innerHTML='<span class="err">'+String(e.message||e)+'</span>';
+    document.getElementById('retry').style.display='inline-block';
+  }
+})();
+</script>
+</body>
+</html>

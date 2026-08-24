@@ -798,11 +798,18 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-08-24T15:00:39.868Z",
-    "duration": 1,
+    "duration": 30,
     "date": "2026-08-24",
     "type": "tracked",
     "manual": false,
-    "screenshots": [],
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_6/32_1787583646338.jpg",
+        "time": "2026-08-24T15:00:46.339Z",
+        "mouse": 121,
+        "keys": 0
+      }
+    ],
     "url": null
   }
 ]

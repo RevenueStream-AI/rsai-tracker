@@ -85,6 +85,104 @@
     "url": null
   },
   {
+    "id": 1,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-05T21:09:13.890Z",
+    "duration": 1263,
+    "date": "2026-08-05",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 3,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-06T14:56:54.274Z",
+    "duration": 813,
+    "date": "2026-08-06",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 5,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T18:15:39.521Z",
+    "duration": 830,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 6,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T18:15:58.269Z",
+    "duration": 1273,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 14,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T19:27:35.315Z",
+    "duration": 1291,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_1/14_1786130863979.jpg",
+        "time": "2026-08-07T19:27:43.979Z",
+        "mouse": 86,
+        "keys": 2
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 15,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T19:28:02.119Z",
+    "duration": 1,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 16,
+    "uid": 1,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-19T15:39:46.132Z",
+    "duration": 656,
+    "date": "2026-08-19",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
     "id": 17,
     "uid": 6,
     "project": "RSAI Project",
@@ -914,7 +1012,7 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-08-26T15:55:12.353Z",
-    "duration": 13284,
+    "duration": 13314,
     "date": "2026-08-26",
     "type": "tracked",
     "manual": false,
@@ -1010,104 +1108,6 @@
         "keys": 0
       }
     ],
-    "url": null
-  },
-  {
-    "id": 1,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-05T21:09:13.890Z",
-    "duration": 1263,
-    "date": "2026-08-05",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 3,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-06T14:56:54.274Z",
-    "duration": 813,
-    "date": "2026-08-06",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 5,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T18:15:39.521Z",
-    "duration": 830,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 6,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T18:15:58.269Z",
-    "duration": 1273,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 14,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T19:27:35.315Z",
-    "duration": 1291,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_1/14_1786130863979.jpg",
-        "time": "2026-08-07T19:27:43.979Z",
-        "mouse": 86,
-        "keys": 2
-      }
-    ],
-    "url": null
-  },
-  {
-    "id": 15,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T19:28:02.119Z",
-    "duration": 1,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 16,
-    "uid": 1,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-19T15:39:46.132Z",
-    "duration": 656,
-    "date": "2026-08-19",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
     "url": null
   }
 ]

@@ -6,8 +6,37 @@
 // land inside it automatically instead of hitting the "create your own org"
 // screen. All secret keys stay server-side only and are never sent to the browser.
 // Called by the RSAI Tracker admin Users page (sendInvite()).
+//
+// Orphaned-account recovery: an invitation link becomes unusable if it gets
+// superseded (e.g. a second invite is sent before the first is accepted).
+// If the person never finished sign-up, Clerk can still be left holding a
+// user record for that email, and a fresh invite then fails with an
+// "already exists" error even though nobody can actually sign in. When that
+// happens below, we look up the existing Clerk user and, ONLY if they have
+// never signed in (last_sign_in_at is empty -- i.e. the account is genuinely
+// orphaned, not a real active user), delete it and retry the invitation
+// automatically. A real account that has signed in before is left alone and
+// still surfaces the original "they already have an account" error, since
+// re-inviting an active user is never the right fix.
 
 const ORG_ID = '';
+
+function createInvitation(secretKey, email, name) {
+    return fetch('https://api.clerk.com/v1/invitations', {
+        method: 'POST',
+        headers: {
+            Authorization: 'Bearer ' + secretKey,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email_address: email,
+            redirect_url: 'https://tracker.revenuestream.ai/',
+            notify: true,
+            ignore_existing: true,
+            public_metadata: name ? { name: name } : undefined,
+        }),
+    });
+}
 
 export async function onRequestPost(context) {
     const { request, env } = context;
@@ -56,22 +85,45 @@ try {
     } catch (e) {
     }
 
-    const resp = await fetch('https://api.clerk.com/v1/invitations', {
-        method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + secretKey,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email_address: email,
-                        redirect_url: 'https://tracker.revenuestream.ai/',
-                        notify: true,
-            ignore_existing: true,
-            public_metadata: name ? { name: name } : undefined,
-        }),
-    });
+    let resp = await createInvitation(secretKey, email, name);
+    let data = await resp.json();
+    let recoveredOrphan = false;
 
-    const data = await resp.json();
+    if (!resp.ok) {
+        const firstMsg = (data.errors && data.errors[0] && data.errors[0].message) || '';
+        const looksLikeExistingAccount = /already exist|already a member|duplicate/i.test(firstMsg);
+
+        if (looksLikeExistingAccount) {
+            try {
+                const lookupResp = await fetch(
+                    'https://api.clerk.com/v1/users?email_address=' + encodeURIComponent(email),
+                    { headers: { Authorization: 'Bearer ' + secretKey } }
+                );
+                if (lookupResp.ok) {
+                    const lookupData = await lookupResp.json();
+                    const users = Array.isArray(lookupData) ? lookupData : (lookupData.data || []);
+                    const existing = users[0];
+
+                    // Only recover an orphaned account: created by a superseded
+                    // invite link but never actually used to sign in. A real,
+                    // active account is left untouched.
+                    if (existing && !existing.last_sign_in_at) {
+                        const delResp = await fetch('https://api.clerk.com/v1/users/' + existing.id, {
+                            method: 'DELETE',
+                            headers: { Authorization: 'Bearer ' + secretKey },
+                        });
+                        if (delResp.ok) {
+                            resp = await createInvitation(secretKey, email, name);
+                            data = await resp.json();
+                            recoveredOrphan = true;
+                        }
+                    }
+                }
+            } catch (e) {
+                // fall through -- original error response below still applies
+            }
+        }
+    }
 
     if (!resp.ok) {
         const msg = (data.errors && data.errors[0] && data.errors[0].message) || 'Clerk invitation failed';
@@ -157,6 +209,7 @@ try {
     return new Response(JSON.stringify({
         ok: true,
         invitation: { id: data.id, status: data.status, email_address: data.email_address },
+        recoveredOrphan,
         orgInvite,
         emailSent,
         emailError,

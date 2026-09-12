@@ -183,6 +183,62 @@
     "url": null
   },
   {
+    "id": 83,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-12T19:43:14.696Z",
+    "duration": 5680,
+    "date": "2026-09-12",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/83_1789242206570.jpg",
+        "time": "2026-09-12T19:43:26.570Z",
+        "mouse": 222,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789243107081.jpg",
+        "time": "2026-09-12T19:58:27.081Z",
+        "mouse": 510,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789244007052.jpg",
+        "time": "2026-09-12T20:13:27.052Z",
+        "mouse": 161,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789244907055.jpg",
+        "time": "2026-09-12T20:28:27.055Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789245807043.jpg",
+        "time": "2026-09-12T20:43:27.043Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789246707029.jpg",
+        "time": "2026-09-12T20:58:27.029Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/83_1789247607043.jpg",
+        "time": "2026-09-12T21:13:27.043Z",
+        "mouse": 145,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
     "id": 17,
     "uid": 6,
     "project": "RSAI Project",
@@ -1530,7 +1586,7 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-09-12T16:22:36.516Z",
-    "duration": 17708,
+    "duration": 17722,
     "date": "2026-09-12",
     "type": "tracked",
     "manual": false,
@@ -1675,62 +1731,6 @@
     "type": "tracked",
     "manual": false,
     "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 83,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-12T19:43:14.696Z",
-    "duration": 5680,
-    "date": "2026-09-12",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_10/83_1789242206570.jpg",
-        "time": "2026-09-12T19:43:26.570Z",
-        "mouse": 222,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789243107081.jpg",
-        "time": "2026-09-12T19:58:27.081Z",
-        "mouse": 510,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789244007052.jpg",
-        "time": "2026-09-12T20:13:27.052Z",
-        "mouse": 161,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789244907055.jpg",
-        "time": "2026-09-12T20:28:27.055Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789245807043.jpg",
-        "time": "2026-09-12T20:43:27.043Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789246707029.jpg",
-        "time": "2026-09-12T20:58:27.029Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/83_1789247607043.jpg",
-        "time": "2026-09-12T21:13:27.043Z",
-        "mouse": 145,
-        "keys": 0
-      }
-    ],
     "url": null
   }
 ]

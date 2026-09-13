@@ -1713,11 +1713,18 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-09-13T15:59:50.292Z",
-    "duration": 1,
+    "duration": 31,
     "date": "2026-09-13",
     "type": "tracked",
     "manual": false,
-    "screenshots": [],
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/85_1789315199151.jpg",
+        "time": "2026-09-13T15:59:59.151Z",
+        "mouse": 267,
+        "keys": 0
+      }
+    ],
     "url": null
   }
 ]

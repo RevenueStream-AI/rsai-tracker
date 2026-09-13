@@ -183,44 +183,6 @@
     "url": null
   },
   {
-    "id": 85,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-13T15:59:50.292Z",
-    "duration": 2813,
-    "date": "2026-09-13",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_10/85_1789315199151.jpg",
-        "time": "2026-09-13T15:59:59.151Z",
-        "mouse": 267,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/85_1789316098347.jpg",
-        "time": "2026-09-13T16:14:58.347Z",
-        "mouse": 97,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/85_1789316998310.jpg",
-        "time": "2026-09-13T16:29:58.310Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/85_1789317898456.jpg",
-        "time": "2026-09-13T16:44:58.456Z",
-        "mouse": 1,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
     "id": 17,
     "uid": 6,
     "project": "RSAI Project",
@@ -1777,6 +1739,44 @@
       {
         "url": "/screenshots/uid_6/85_1789317925534.jpg",
         "time": "2026-09-13T16:45:25.534Z",
+        "mouse": 1,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 85,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-13T15:59:50.292Z",
+    "duration": 2840,
+    "date": "2026-09-13",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/85_1789315199151.jpg",
+        "time": "2026-09-13T15:59:59.151Z",
+        "mouse": 267,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/85_1789316098347.jpg",
+        "time": "2026-09-13T16:14:58.347Z",
+        "mouse": 97,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/85_1789316998310.jpg",
+        "time": "2026-09-13T16:29:58.310Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/85_1789317898456.jpg",
+        "time": "2026-09-13T16:44:58.456Z",
         "mouse": 1,
         "keys": 0
       }

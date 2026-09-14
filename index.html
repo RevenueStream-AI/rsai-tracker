@@ -2990,6 +2990,26 @@ function renderUsers(){
   }).join('');
 }
 
+function showInviteToast(msg, isError){
+var box = document.getElementById('inviteToastBox');
+if(!box){
+  box = document.createElement('div');
+  box.id = 'inviteToastBox';
+  box.style.cssText = 'position:fixed;top:20px;right:20px;z-index:99999;display:flex;flex-direction:column;gap:10px;max-width:380px;';
+  document.body.appendChild(box);
+}
+var t = document.createElement('div');
+t.textContent = msg;
+t.style.cssText = 'padding:14px 18px;border-radius:8px;font-size:14px;line-height:1.4;box-shadow:0 4px 16px rgba(0,0,0,0.2);color:#fff;white-space:pre-line;background:' + (isError ? '#dc2626' : '#16a34a') + ';opacity:0;transition:opacity 0.3s;';
+box.appendChild(t);
+requestAnimationFrame(function(){ t.style.opacity = '1'; });
+var hideAfter = isError ? 7000 : 4000;
+setTimeout(function(){
+  t.style.opacity = '0';
+  setTimeout(function(){ t.remove(); }, 300);
+}, hideAfter);
+}
+
 function sendInvite(uid){
 const u=users.find(x=>x.id===uid); if(!u)return;
 const row=document.querySelector('tr [onclick*="sendInvite('+uid+')"]');
@@ -3001,7 +3021,7 @@ if(res.ok){
   u.invited=true;
   addAudit(cu.id,'Invite sent','User',`Clerk invite sent to ${u.email}`);
   renderUsers();
-  alert('Invitation email sent to '+u.email+'.');
+  showInviteToast('Invitation email sent to '+u.email+'.', false);
 }
 else {
   /* An invitation is a SIGN-UP link. If the person already has an account
@@ -3009,14 +3029,14 @@ else {
      rather than reporting a generic failure. */
   var _err = (res.data && (res.data.error || res.data.message)) || 'Unknown error';
   if(/already exist|already a member|duplicate/i.test(_err)){
-    alert(u.email+' already has an account, so an invitation will not work — an invite is a sign-up link.\n\nAsk them to go to the tracker and sign in directly. If they do not know their password, they should use "Forgot password" on the sign-in screen.');
+    showInviteToast(u.email+' already has an account, so an invitation will not work — an invite is a sign-up link.\n\nAsk them to go to the tracker and sign in directly. If they do not know their password, they should use "Forgot password" on the sign-in screen.', true);
   } else {
-    alert('Failed to send invite: '+_err);
+    showInviteToast('Failed to send invite: '+_err, true);
   }
   renderUsers();
 }
 })
-.catch(function(e){ alert('Failed to send invite: '+e.message); renderUsers(); });
+.catch(function(e){ showInviteToast('Failed to send invite: '+e.message, true); renderUsers(); });
 }
 
 function removeUser(uid){ if(!confirm('Remove this user and all their data?'))return; const u=users.find(x=>x.id===uid); addAudit(cu.id,'User deleted','User',`Removed ${u?.name}`); users=users.filter(x=>x.id!==uid);localStorage.setItem('amc_users_extra',JSON.stringify(users.filter(function(u){return u.id>1;})));const _del2=JSON.parse(localStorage.getItem('amc_deleted_users')||'[]');if(!_del2.includes(uid)){_del2.push(uid);localStorage.setItem('amc_deleted_users',JSON.stringify(_del2));}syncUsersToGitHub();  sessions=sessions.filter(s=>s.uid!==uid); leaves=leaves.filter(l=>l.uid!==uid); renderUsers(); buildDeptFilter(); }

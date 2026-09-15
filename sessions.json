@@ -168,91 +168,6 @@
     "url": null
   },
   {
-    "id": 10,
-    "uid": 7,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T18:30:12.793Z",
-    "duration": 117,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_7/10_1786127418446.jpg",
-        "time": "2026-08-07T18:30:18.446Z",
-        "mouse": 610,
-        "keys": 2
-      }
-    ],
-    "url": null
-  },
-  {
-    "id": 13,
-    "uid": 7,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-08-07T19:04:57.108Z",
-    "duration": 2,
-    "date": "2026-08-07",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 90,
-    "uid": 7,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-14T18:40:51.622Z",
-    "duration": 6489,
-    "date": "2026-09-14",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_7/90_1789411259678.jpg",
-        "time": "2026-09-14T18:40:59.679Z",
-        "mouse": 57,
-        "keys": 2
-      }
-    ],
-    "url": null
-  },
-  {
-    "id": 91,
-    "uid": 7,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-15T08:35:32.363Z",
-    "duration": 2456,
-    "date": "2026-09-15",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_7/91_1789461336218.jpg",
-        "time": "2026-09-15T08:35:36.218Z",
-        "mouse": 112,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_7/91_1789462236511.jpg",
-        "time": "2026-09-15T08:50:36.511Z",
-        "mouse": 7,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_7/91_1789463136505.jpg",
-        "time": "2026-09-15T09:05:36.505Z",
-        "mouse": 16,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
     "id": 1,
     "uid": 1,
     "project": "RSAI Project",
@@ -2172,6 +2087,91 @@
         "url": "/screenshots/uid_11/89_1789415331769.jpg",
         "time": "2026-09-14T19:48:51.769Z",
         "mouse": 134,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 10,
+    "uid": 7,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T18:30:12.793Z",
+    "duration": 117,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_7/10_1786127418446.jpg",
+        "time": "2026-08-07T18:30:18.446Z",
+        "mouse": 610,
+        "keys": 2
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 13,
+    "uid": 7,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-08-07T19:04:57.108Z",
+    "duration": 2,
+    "date": "2026-08-07",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 90,
+    "uid": 7,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-14T18:40:51.622Z",
+    "duration": 6489,
+    "date": "2026-09-14",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_7/90_1789411259678.jpg",
+        "time": "2026-09-14T18:40:59.679Z",
+        "mouse": 57,
+        "keys": 2
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 91,
+    "uid": 7,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-15T08:35:32.363Z",
+    "duration": 2456,
+    "date": "2026-09-15",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_7/91_1789461336218.jpg",
+        "time": "2026-09-15T08:35:36.218Z",
+        "mouse": 112,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_7/91_1789462236511.jpg",
+        "time": "2026-09-15T08:50:36.511Z",
+        "mouse": 7,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_7/91_1789463136505.jpg",
+        "time": "2026-09-15T09:05:36.505Z",
+        "mouse": 16,
         "keys": 0
       }
     ],

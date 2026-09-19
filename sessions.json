@@ -3016,11 +3016,18 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-09-19T01:00:26.186Z",
-    "duration": 1,
+    "duration": 31,
     "date": "2026-09-18",
     "type": "tracked",
     "manual": false,
-    "screenshots": [],
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/123_1789779631582.jpg",
+        "time": "2026-09-19T01:00:31.582Z",
+        "mouse": 221,
+        "keys": 2
+      }
+    ],
     "url": null
   }
 ]

@@ -911,21 +911,8 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-08-27T15:54:25.799Z",
-    "duration": 14959,
+    "duration": 11622,
     "date": "2026-08-27",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 43,
-    "uid": 6,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-04T16:13:09.364Z",
-    "duration": 103,
-    "date": "2026-09-04",
     "type": "tracked",
     "manual": false,
     "screenshots": [],
@@ -2324,6 +2311,19 @@
         "keys": 0
       }
     ],
+    "url": null
+  },
+  {
+    "id": 43,
+    "uid": 6,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-04T16:13:09.364Z",
+    "duration": 103,
+    "date": "2026-09-04",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
     "url": null
   },
   {

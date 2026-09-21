@@ -126,7 +126,7 @@
       "phone": "",
       "status": "active",
       "startDate": "2026-09-11",
-      "invited": true,
+      "invited": false,
       "manager": null,
       "leaveBalance": {
         "vacation": 6,
@@ -162,6 +162,6 @@
       "pwh": ""
     }
   ],
-  "updated": "2026-09-21T22:16:30.441Z",
+  "updated": "2026-09-21T22:17:07.637Z",
   "note": "RSAI Tracker user database. Managed automatically by the app."
 }

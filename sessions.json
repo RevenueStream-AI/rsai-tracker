@@ -4360,5 +4360,25 @@
       }
     ],
     "url": null
+  },
+  {
+    "id": 160,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-27T16:59:04.227Z",
+    "duration": 2,
+    "date": "2026-09-27",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/160_1790528344280.jpg",
+        "time": "2026-09-27T16:59:04.280Z",
+        "mouse": 333,
+        "keys": 0
+      }
+    ],
+    "url": null
   }
 ]

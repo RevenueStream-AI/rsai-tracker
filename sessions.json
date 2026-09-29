@@ -1876,7 +1876,14 @@
     "date": "2026-09-29",
     "type": "tracked",
     "manual": false,
-    "screenshots": [],
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_7/169_1790714906201.jpg",
+        "time": "2026-09-29T20:48:26.201Z",
+        "mouse": 46,
+        "keys": 2
+      }
+    ],
     "url": null
   }
 ]

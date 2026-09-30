@@ -724,367 +724,6 @@
     "url": null
   },
   {
-    "id": 85,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-13T15:59:50.292Z",
-    "duration": 14504,
-    "date": "2026-09-13",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 121,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-18T02:06:32.561Z",
-    "duration": 15625,
-    "date": "2026-09-17",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 123,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-19T01:00:26.186Z",
-    "duration": 23484,
-    "date": "2026-09-18",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 137,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-21T02:54:50.587Z",
-    "duration": 11182,
-    "date": "2026-09-20",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 141,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-22T17:28:42.564Z",
-    "duration": 10868,
-    "date": "2026-09-22",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 148,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-24T15:46:41.778Z",
-    "duration": 15497,
-    "date": "2026-09-24",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 151,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-26T14:56:01.239Z",
-    "duration": 25451,
-    "date": "2026-09-26",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [],
-    "url": null
-  },
-  {
-    "id": 157,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-27T14:45:13.229Z",
-    "duration": 7627,
-    "date": "2026-09-27",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_10/157_1790520316523.jpg",
-        "time": "2026-09-27T14:45:16.523Z",
-        "mouse": 169,
-        "keys": 2
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790521216608.jpg",
-        "time": "2026-09-27T15:00:16.608Z",
-        "mouse": 47,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790522116223.jpg",
-        "time": "2026-09-27T15:15:16.223Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790523016222.jpg",
-        "time": "2026-09-27T15:30:16.222Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790523916225.jpg",
-        "time": "2026-09-27T15:45:16.225Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790524816219.jpg",
-        "time": "2026-09-27T16:00:16.219Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790525716222.jpg",
-        "time": "2026-09-27T16:15:16.222Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790526616259.jpg",
-        "time": "2026-09-27T16:30:16.259Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/157_1790527516233.jpg",
-        "time": "2026-09-27T16:45:16.233Z",
-        "mouse": 1,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
-    "id": 160,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-27T16:59:04.227Z",
-    "duration": 21704,
-    "date": "2026-09-27",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_10/160_1790528344280.jpg",
-        "time": "2026-09-27T16:59:04.280Z",
-        "mouse": 333,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790529245265.jpg",
-        "time": "2026-09-27T17:14:05.265Z",
-        "mouse": 229,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790530145315.jpg",
-        "time": "2026-09-27T17:29:05.315Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790531045250.jpg",
-        "time": "2026-09-27T17:44:05.250Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790531945249.jpg",
-        "time": "2026-09-27T17:59:05.249Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790532845415.jpg",
-        "time": "2026-09-27T18:14:05.415Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790533745224.jpg",
-        "time": "2026-09-27T18:29:05.224Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790534645393.jpg",
-        "time": "2026-09-27T18:44:05.393Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790535545281.jpg",
-        "time": "2026-09-27T18:59:05.281Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790536445219.jpg",
-        "time": "2026-09-27T19:14:05.219Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790537345318.jpg",
-        "time": "2026-09-27T19:29:05.319Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790538245262.jpg",
-        "time": "2026-09-27T19:44:05.262Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790539145473.jpg",
-        "time": "2026-09-27T19:59:05.473Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790540045233.jpg",
-        "time": "2026-09-27T20:14:05.233Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790540945439.jpg",
-        "time": "2026-09-27T20:29:05.439Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790541845217.jpg",
-        "time": "2026-09-27T20:44:05.217Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790542745279.jpg",
-        "time": "2026-09-27T20:59:05.280Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790543645241.jpg",
-        "time": "2026-09-27T21:14:05.241Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790544545240.jpg",
-        "time": "2026-09-27T21:29:05.240Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790545445270.jpg",
-        "time": "2026-09-27T21:44:05.270Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790546345301.jpg",
-        "time": "2026-09-27T21:59:05.301Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790547245314.jpg",
-        "time": "2026-09-27T22:14:05.314Z",
-        "mouse": 49,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790548145227.jpg",
-        "time": "2026-09-27T22:29:05.227Z",
-        "mouse": 1,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790549045221.jpg",
-        "time": "2026-09-27T22:44:05.221Z",
-        "mouse": 624,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/160_1790549945219.jpg",
-        "time": "2026-09-27T22:59:05.219Z",
-        "mouse": 209,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
-    "id": 175,
-    "uid": 10,
-    "project": "RSAI Project",
-    "category": "Work",
-    "start": "2026-09-30T16:55:37.187Z",
-    "duration": 2745,
-    "date": "2026-09-30",
-    "type": "tracked",
-    "manual": false,
-    "screenshots": [
-      {
-        "url": "/screenshots/uid_10/175_1790787343740.jpg",
-        "time": "2026-09-30T16:55:43.740Z",
-        "mouse": 146,
-        "keys": 2
-      },
-      {
-        "url": "/screenshots/uid_10/175_1790788243883.jpg",
-        "time": "2026-09-30T17:10:43.883Z",
-        "mouse": 30,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/175_1790789143857.jpg",
-        "time": "2026-09-30T17:25:43.857Z",
-        "mouse": 203,
-        "keys": 0
-      },
-      {
-        "url": "/screenshots/uid_10/175_1790790043863.jpg",
-        "time": "2026-09-30T17:40:43.863Z",
-        "mouse": 1,
-        "keys": 0
-      }
-    ],
-    "url": null
-  },
-  {
     "id": 89,
     "uid": 11,
     "project": "RSAI Project",
@@ -2025,6 +1664,367 @@
       {
         "url": "/screenshots/uid_6/174_1790790066946.jpg",
         "time": "2026-09-30T17:41:06.946Z",
+        "mouse": 1,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 85,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-13T15:59:50.292Z",
+    "duration": 14504,
+    "date": "2026-09-13",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 121,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-18T02:06:32.561Z",
+    "duration": 15625,
+    "date": "2026-09-17",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 123,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-19T01:00:26.186Z",
+    "duration": 23484,
+    "date": "2026-09-18",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 137,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-21T02:54:50.587Z",
+    "duration": 11182,
+    "date": "2026-09-20",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 141,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-22T17:28:42.564Z",
+    "duration": 10868,
+    "date": "2026-09-22",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 148,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-24T15:46:41.778Z",
+    "duration": 15497,
+    "date": "2026-09-24",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 151,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-26T14:56:01.239Z",
+    "duration": 25451,
+    "date": "2026-09-26",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
+  },
+  {
+    "id": 157,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-27T14:45:13.229Z",
+    "duration": 7627,
+    "date": "2026-09-27",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/157_1790520316523.jpg",
+        "time": "2026-09-27T14:45:16.523Z",
+        "mouse": 169,
+        "keys": 2
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790521216608.jpg",
+        "time": "2026-09-27T15:00:16.608Z",
+        "mouse": 47,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790522116223.jpg",
+        "time": "2026-09-27T15:15:16.223Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790523016222.jpg",
+        "time": "2026-09-27T15:30:16.222Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790523916225.jpg",
+        "time": "2026-09-27T15:45:16.225Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790524816219.jpg",
+        "time": "2026-09-27T16:00:16.219Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790525716222.jpg",
+        "time": "2026-09-27T16:15:16.222Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790526616259.jpg",
+        "time": "2026-09-27T16:30:16.259Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/157_1790527516233.jpg",
+        "time": "2026-09-27T16:45:16.233Z",
+        "mouse": 1,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 160,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-27T16:59:04.227Z",
+    "duration": 21704,
+    "date": "2026-09-27",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/160_1790528344280.jpg",
+        "time": "2026-09-27T16:59:04.280Z",
+        "mouse": 333,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790529245265.jpg",
+        "time": "2026-09-27T17:14:05.265Z",
+        "mouse": 229,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790530145315.jpg",
+        "time": "2026-09-27T17:29:05.315Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790531045250.jpg",
+        "time": "2026-09-27T17:44:05.250Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790531945249.jpg",
+        "time": "2026-09-27T17:59:05.249Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790532845415.jpg",
+        "time": "2026-09-27T18:14:05.415Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790533745224.jpg",
+        "time": "2026-09-27T18:29:05.224Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790534645393.jpg",
+        "time": "2026-09-27T18:44:05.393Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790535545281.jpg",
+        "time": "2026-09-27T18:59:05.281Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790536445219.jpg",
+        "time": "2026-09-27T19:14:05.219Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790537345318.jpg",
+        "time": "2026-09-27T19:29:05.319Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790538245262.jpg",
+        "time": "2026-09-27T19:44:05.262Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790539145473.jpg",
+        "time": "2026-09-27T19:59:05.473Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790540045233.jpg",
+        "time": "2026-09-27T20:14:05.233Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790540945439.jpg",
+        "time": "2026-09-27T20:29:05.439Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790541845217.jpg",
+        "time": "2026-09-27T20:44:05.217Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790542745279.jpg",
+        "time": "2026-09-27T20:59:05.280Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790543645241.jpg",
+        "time": "2026-09-27T21:14:05.241Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790544545240.jpg",
+        "time": "2026-09-27T21:29:05.240Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790545445270.jpg",
+        "time": "2026-09-27T21:44:05.270Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790546345301.jpg",
+        "time": "2026-09-27T21:59:05.301Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790547245314.jpg",
+        "time": "2026-09-27T22:14:05.314Z",
+        "mouse": 49,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790548145227.jpg",
+        "time": "2026-09-27T22:29:05.227Z",
+        "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790549045221.jpg",
+        "time": "2026-09-27T22:44:05.221Z",
+        "mouse": 624,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/160_1790549945219.jpg",
+        "time": "2026-09-27T22:59:05.219Z",
+        "mouse": 209,
+        "keys": 0
+      }
+    ],
+    "url": null
+  },
+  {
+    "id": 175,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-09-30T16:55:37.187Z",
+    "duration": 2775,
+    "date": "2026-09-30",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/175_1790787343740.jpg",
+        "time": "2026-09-30T16:55:43.740Z",
+        "mouse": 146,
+        "keys": 2
+      },
+      {
+        "url": "/screenshots/uid_10/175_1790788243883.jpg",
+        "time": "2026-09-30T17:10:43.883Z",
+        "mouse": 30,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/175_1790789143857.jpg",
+        "time": "2026-09-30T17:25:43.857Z",
+        "mouse": 203,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_10/175_1790790043863.jpg",
+        "time": "2026-09-30T17:40:43.863Z",
         "mouse": 1,
         "keys": 0
       }

@@ -2664,7 +2664,7 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-10-02T15:58:14.204Z",
-    "duration": 13501,
+    "duration": 13519,
     "date": "2026-10-02",
     "type": "tracked",
     "manual": false,
@@ -2757,6 +2757,12 @@
         "url": "/screenshots/uid_6/190_1790969304308.jpg",
         "time": "2026-10-02T19:28:24.308Z",
         "mouse": 1,
+        "keys": 0
+      },
+      {
+        "url": "/screenshots/uid_6/190_1790970204327.jpg",
+        "time": "2026-10-02T19:43:24.327Z",
+        "mouse": 54,
         "keys": 0
       }
     ],

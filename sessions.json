@@ -7914,5 +7914,25 @@
     "manual": false,
     "screenshots": [],
     "url": null
+  },
+  {
+    "id": 337,
+    "uid": 10,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-11-04T16:23:40.582Z",
+    "duration": 31,
+    "date": "2026-11-04",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_10/337_1793809428142.jpg",
+        "time": "2026-11-04T16:23:48.142Z",
+        "mouse": 409,
+        "keys": 2
+      }
+    ],
+    "url": null
   }
 ]

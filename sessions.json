@@ -11405,5 +11405,18 @@
     "manual": false,
     "screenshots": [],
     "url": null
+  },
+  {
+    "id": 410,
+    "uid": 11,
+    "project": "RSAI Project",
+    "category": "Work",
+    "start": "2026-11-25T03:47:22.150Z",
+    "duration": 5,
+    "date": "2026-11-24",
+    "type": "tracked",
+    "manual": false,
+    "screenshots": [],
+    "url": null
   }
 ]

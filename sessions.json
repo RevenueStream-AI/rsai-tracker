@@ -11386,11 +11386,18 @@
     "project": "RSAI Project",
     "category": "Work",
     "start": "2026-11-27T15:55:18.051Z",
-    "duration": 51,
+    "duration": 60,
     "date": "2026-11-27",
     "type": "tracked",
     "manual": false,
-    "screenshots": [],
+    "screenshots": [
+      {
+        "url": "/screenshots/uid_6/417_1795794972437.jpg",
+        "time": "2026-11-27T15:56:12.437Z",
+        "mouse": 131,
+        "keys": 0
+      }
+    ],
     "url": null
   }
 ]
